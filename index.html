@@ -1,0 +1,4217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailandia 2025/26</title>
+    <style>
+/* =============================================
+   VIAGEM TAILANDIA - STYLES
+   ============================================= */
+
+:root {
+    --primary: #E91E63;
+    --secondary: #FF9800;
+    --dark: #1a1a2e;
+    --light: #f5f5f5;
+    --card-bg: #ffffff;
+    --gold: #FFD700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--dark);
+}
+
+/* =============================================
+   HEADER & NAVIGATION
+   ============================================= */
+
+.header {
+    background: linear-gradient(135deg, #E91E63 0%, #FF5722 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.header h1 { font-size: 1.8rem; margin-bottom: 5px; }
+.header p { opacity: 0.9; font-size: 0.9rem; }
+
+.nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    background: var(--dark);
+    padding: 10px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-tab.active, .nav-tab:hover { background: var(--primary); }
+
+/* =============================================
+   SECTIONS
+   ============================================= */
+
+.section {
+    display: none;
+    padding: 15px;
+    background: var(--light);
+    min-height: calc(100vh - 150px);
+}
+
+.section.active { display: block; }
+
+/* =============================================
+   CARDS
+   ============================================= */
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.card-icon { font-size: 1.5rem; }
+.card-title { font-weight: 600; font-size: 1.1rem; color: var(--dark); }
+.card-subtitle { font-size: 0.8rem; color: #666; }
+
+.card-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.badge-food { background: #FFECB3; color: #FF6F00; }
+.badge-temple { background: #E1BEE7; color: #7B1FA2; }
+.badge-beach { background: #B2EBF2; color: #00838F; }
+.badge-market { background: #C8E6C9; color: #2E7D32; }
+.badge-tour { background: #BBDEFB; color: #1565C0; }
+
+.card-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.card-content ul { list-style: none; padding-left: 0; }
+.card-content li { padding: 4px 0; border-bottom: 1px solid #eee; }
+.card-content li:last-child { border-bottom: none; }
+
+/* =============================================
+   POI CARDS
+   ============================================= */
+
+.poi-grid { display: grid; gap: 12px; }
+
+.poi-card {
+    background: white;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-left: 4px solid var(--primary);
+}
+
+.poi-card.highlight {
+    border-left-color: var(--gold);
+    background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+}
+
+.poi-name { font-weight: 600; font-size: 1rem; margin-bottom: 6px; color: var(--dark); }
+.poi-tag { font-size: 0.7rem; background: #eee; padding: 2px 8px; border-radius: 10px; margin-right: 5px; }
+.poi-details { font-size: 0.85rem; color: #666; margin-top: 8px; }
+.poi-price { color: var(--primary); font-weight: 600; }
+
+/* =============================================
+   REGION HEADER
+   ============================================= */
+
+.region-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.region-header h2 { font-size: 1.3rem; margin-bottom: 5px; }
+.region-header p { opacity: 0.9; font-size: 0.85rem; }
+
+/* =============================================
+   SCHEDULE / CRONOGRAMA
+   ============================================= */
+
+.schedule-day {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.schedule-date {
+    background: var(--dark);
+    color: white;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.schedule-date.today {
+    background: linear-gradient(135deg, #E91E63 0%, #FF5722 100%);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.schedule-content { padding: 12px 15px; }
+
+.schedule-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-item:last-child { border-bottom: none; }
+.schedule-time { font-weight: 600; color: var(--primary); min-width: 60px; }
+
+/* =============================================
+   EMERGENCY CARD
+   ============================================= */
+
+.emergency-card {
+    background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 15px;
+}
+
+.emergency-card h3 { margin-bottom: 10px; }
+.emergency-number { font-size: 1.5rem; font-weight: bold; }
+
+/* =============================================
+   TIP CARD
+   ============================================= */
+
+.tip-card {
+    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+/* =============================================
+   PHRASE TABLE
+   ============================================= */
+
+.phrase-table { width: 100%; border-collapse: collapse; }
+.phrase-table td { padding: 10px; border-bottom: 1px solid #eee; }
+.phrase-table td:first-child { font-weight: 600; width: 35%; }
+.phrase-table td:nth-child(2) { color: var(--primary); width: 35%; }
+.phrase-table td:last-child { font-size: 0.8rem; color: #666; }
+
+/* =============================================
+   SUB NAVIGATION
+   ============================================= */
+
+.sub-nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+.sub-nav-btn {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+    color: var(--primary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sub-nav-btn.active { background: var(--primary); color: white; }
+
+/* =============================================
+   FLIGHT CARD
+   ============================================= */
+
+.flight-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.flight-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.flight-city { text-align: center; }
+.flight-code { font-size: 1.5rem; font-weight: bold; color: var(--dark); }
+.flight-name { font-size: 0.75rem; color: #666; }
+
+.flight-line {
+    flex: 1;
+    height: 2px;
+    background: #ddd;
+    margin: 0 15px;
+    position: relative;
+}
+
+.flight-line::after {
+    content: '✈️';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flight-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
+.booking-code {
+    background: var(--dark);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+/* =============================================
+   HOTEL CARD
+   ============================================= */
+
+.hotel-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.hotel-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+}
+
+.hotel-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
+.hotel-dates { font-size: 0.85rem; opacity: 0.9; }
+.hotel-body { padding: 15px; }
+.hotel-detail { display: flex; gap: 10px; padding: 8px 0; font-size: 0.9rem; }
+.hotel-detail-icon { width: 24px; }
+
+/* =============================================
+   COLLAPSIBLE
+   ============================================= */
+
+.collapsible {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.collapsible-header {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.collapsible-header::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.collapsible.open .collapsible-header::after { transform: rotate(180deg); }
+.collapsible-content { display: none; padding: 0 15px 15px; }
+.collapsible.open .collapsible-content { display: block; }
+
+/* =============================================
+   HISTORY CARD
+   ============================================= */
+
+.history-card {
+    background: linear-gradient(135deg, #8E24AA 0%, #5E35B1 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 20px;
+}
+
+.history-card h4 { margin-bottom: 12px; font-size: 1.1rem; }
+.history-card ul { padding-left: 20px; }
+.history-card li { margin-bottom: 8px; line-height: 1.5; }
+
+/* =============================================
+   QR PLACEHOLDER
+   ============================================= */
+
+.qr-placeholder {
+    background: white;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.qr-placeholder .icon { font-size: 3rem; }
+.qr-placeholder p { font-size: 0.85rem; color: #666; margin-top: 10px; }
+
+/* =============================================
+   IMPORTANT BOX
+   ============================================= */
+
+.important-box {
+    background: #fff3e0;
+    border-left: 4px solid #FF9800;
+    padding: 15px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 15px;
+}
+
+.important-box.danger {
+    background: #ffebee;
+    border-left-color: #f44336;
+}
+
+.important-box.success {
+    background: #e8f5e9;
+    border-left-color: #4CAF50;
+}
+
+.important-box.warning {
+    background: #fff8e1;
+    border-left-color: #FFC107;
+}
+
+/* =============================================
+   NOTES & TODOS
+   ============================================= */
+
+.notes-todos-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+@media (max-width: 600px) {
+    .notes-todos-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* To-Do Container */
+.todos-container {
+    background: white;
+    border-radius: 16px;
+    margin: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.todos-header-bar {
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    padding: 8px;
+    gap: 8px;
+}
+
+.todos-tabs {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0;
+}
+
+.todos-tabs::-webkit-scrollbar { display: none; }
+
+.todo-tab {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.todo-tab:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.todo-tab.active {
+    background: var(--primary);
+}
+
+.todo-tab.has-items::after {
+    content: '•';
+    margin-left: 4px;
+    color: var(--gold);
+}
+
+/* Sync Status */
+.sync-status {
+    display: flex;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.sync-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #666;
+    transition: background 0.3s;
+}
+
+.sync-status.connected .sync-dot { background: #4CAF50; }
+.sync-status.offline .sync-dot { background: #f44336; }
+.sync-status.disabled .sync-dot { background: #666; }
+
+/* Todos Content */
+.todos-content {
+    padding: 15px;
+}
+
+.todos-input-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.todos-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+
+.todos-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.todos-add-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.todos-add-btn:hover {
+    background: #c2185b;
+}
+
+.todos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.note-item, .todo-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.note-item {
+    border-left: 3px solid var(--secondary);
+}
+
+.todo-item {
+    border-left: 3px solid var(--primary);
+}
+
+.todo-item.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+    border-left-color: #4CAF50;
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.note-text, .todo-text {
+    flex: 1;
+    word-break: break-word;
+}
+
+.note-delete, .todo-delete {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+.note-delete:hover, .todo-delete:hover {
+    color: #f44336;
+}
+
+.note-time {
+    font-size: 0.7rem;
+    color: #999;
+    white-space: nowrap;
+}
+
+/* =============================================
+   PDF LIST
+   ============================================= */
+
+.pdf-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pdf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+.pdf-item.highlight {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f8f9fa 100%);
+    border: 1px solid #2196F3;
+}
+
+.pdf-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.pdf-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.pdf-name {
+    font-size: 0.85rem;
+    color: var(--dark);
+    word-break: break-word;
+}
+
+.pdf-btn {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--primary) 0%, #FF5722 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pdf-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+/* =============================================
+   RESUMAO GRID
+   ============================================= */
+
+.resumao-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.resumao-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.resumao-card .number { font-size: 2rem; font-weight: bold; color: var(--primary); }
+.resumao-card .label { font-size: 0.8rem; color: #666; }
+
+/* =============================================
+   TODAY BANNER
+   ============================================= */
+
+.today-banner {
+    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.today-banner h3 { font-size: 1.2rem; }
+.today-banner p { opacity: 0.9; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+
+.text-center { text-align: center; }
+.mb-10 { margin-bottom: 10px; }
+.mb-15 { margin-bottom: 15px; }
+.mt-15 { margin-top: 15px; }
+.mt-20 { margin-top: 20px; }
+.text-muted { color: #666; }
+.text-small { font-size: 0.85rem; }
+code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+
+/* =============================================
+   SEARCH BAR
+   ============================================= */
+
+.search-container {
+    position: sticky;
+    top: 85px;
+    z-index: 99;
+    background: var(--light);
+    padding: 10px 15px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+}
+
+.search-clear {
+    padding: 8px 12px;
+    background: #ddd;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: none;
+}
+
+.search-clear.visible { display: block; }
+
+.search-results {
+    position: fixed;
+    top: 180px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--light);
+    z-index: 98;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.search-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 15px;
+}
+
+.search-results-header span {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.search-results-close {
+    padding: 8px 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.search-result-item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.search-result-item:hover {
+    transform: translateX(5px);
+}
+
+.search-result-section {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.search-result-text {
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+
+.search-result-text mark {
+    background: #FFEB3B;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.search-no-results {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+/* =============================================
+   DAY-CENTRIC STATUS VIEW
+   ============================================= */
+
+/* Day Navigation */
+.day-nav-container {
+    display: flex;
+    align-items: center;
+    background: var(--dark);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.day-tabs {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0;
+}
+
+.day-tabs::-webkit-scrollbar { display: none; }
+
+.day-tab {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.day-tab:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.day-tab.active {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.day-tab.today {
+    border: 2px solid var(--gold);
+}
+
+.day-tab.has-items::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+
+/* Day Content Container */
+.day-content {
+    min-height: 50vh;
+    transition: transform 0.3s ease;
+}
+
+/* Day Header */
+.day-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.day-header h2 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.day-city {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.day-summary {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Day Cards */
+.day-card {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.day-card-header {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-card-body {
+    padding: 16px;
+}
+
+/* Hotel Day Card */
+.hotel-day-card .day-card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hotel-name-big {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.hotel-area {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.hotel-detail {
+    font-size: 0.9rem;
+    color: #444;
+    padding: 4px 0;
+}
+
+.hotel-extra {
+    font-size: 0.85rem;
+    color: #4CAF50;
+    padding: 4px 0;
+}
+
+.status-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+/* Flight Day Card */
+.flight-day-card .day-card-header {
+    background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+    color: white;
+}
+
+.flight-route-big {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.flight-time-big {
+    font-size: 1.1rem;
+    color: var(--primary);
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.flight-airline {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.flight-code-big {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.flight-code-big strong {
+    background: var(--dark);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-family: monospace;
+}
+
+/* Tour Day Card */
+.tour-day-card .day-card-header {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.tour-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.tour-time, .tour-provider {
+    font-size: 0.9rem;
+    color: #666;
+    padding: 2px 0;
+}
+
+/* PDFs Day Card */
+.pdfs-day-card .day-card-header {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.pdf-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: var(--dark);
+    transition: all 0.2s;
+}
+
+.pdf-link:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.pdf-link:last-child {
+    margin-bottom: 0;
+}
+
+.pdf-link-icon {
+    font-size: 1.2rem;
+}
+
+.pdf-link-name {
+    flex: 1;
+    font-size: 0.85rem;
+}
+
+.pdf-link-arrow {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* Activities Day Card */
+.activities-day-card .day-card-header {
+    background: linear-gradient(135deg, #E91E63 0%, #FF5722 100%);
+    color: white;
+}
+
+.activity-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-time {
+    font-weight: 600;
+    color: var(--primary);
+    min-width: 65px;
+    font-size: 0.9rem;
+}
+
+.activity-desc {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* POIs Day Card */
+.pois-day-card .day-card-header {
+    background: linear-gradient(135deg, #FF9800 0%, #F44336 100%);
+    color: white;
+}
+
+.poi-warning, .poi-section-warning {
+    background: #fff3e0;
+    border-left: 4px solid #FF9800;
+    padding: 10px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+}
+
+.poi-tip {
+    background: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    padding: 10px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+}
+
+.poi-section {
+    margin-bottom: 16px;
+}
+
+.poi-section-title {
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.poi-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.poi-item {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 10px;
+    border-left: 4px solid #ddd;
+}
+
+.poi-item.highlight {
+    border-left-color: var(--gold);
+    background: linear-gradient(135deg, #fff9e6 0%, #f8f9fa 100%);
+}
+
+.poi-item-name {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.poi-google-link {
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+    transition: all 0.2s;
+}
+
+.poi-google-link:hover {
+    color: var(--primary);
+    border-bottom-style: solid;
+}
+
+.poi-google-link:active {
+    opacity: 0.7;
+}
+
+/* Distance Badge */
+.distance-badge {
+    display: none;
+    margin-left: 6px;
+    padding: 2px 6px;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.distance-badge.visible {
+    display: inline-block;
+}
+
+.distance-badge.loading {
+    display: inline-block;
+    background: #999;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Distance Button */
+.distance-btn-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+}
+
+.distance-btn {
+    padding: 10px 16px;
+    background: white;
+    border: none;
+    border-radius: 20px;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.distance-btn:hover {
+    transform: scale(1.05);
+}
+
+.distance-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.distance-status {
+    color: white;
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+.poi-item-tags {
+    margin-bottom: 6px;
+}
+
+.poi-item-details {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.poi-item-price {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.poi-history {
+    background: linear-gradient(135deg, #8E24AA 0%, #5E35B1 100%);
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+}
+
+.poi-history h4 {
+    margin-bottom: 10px;
+}
+
+.poi-history ul {
+    padding-left: 20px;
+    font-size: 0.85rem;
+}
+
+.poi-history li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* Todos Day Card */
+.todos-day-card .day-card-header {
+    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+    color: white;
+}
+
+.todos-empty {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-size: 0.85rem;
+}
+
+/* Swipe Hint */
+.swipe-hint {
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    padding: 20px 0;
+    opacity: 0.7;
+}
+
+/* =============================================
+   SLIDE ANIMATIONS
+   ============================================= */
+
+.day-content {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Slide out to left (going to next day) */
+.day-content.slide-out-left {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+/* Slide in from right (coming from next day) */
+.day-content.slide-in-left {
+    animation: slideInFromRight 0.3s ease forwards;
+}
+
+/* Slide out to right (going to prev day) */
+.day-content.slide-out-right {
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+/* Slide in from left (coming from prev day) */
+.day-content.slide-in-right {
+    animation: slideInFromLeft 0.3s ease forwards;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🇹🇭 Tailândia 2025/26</h1>
+        <p>Gui & Natasha | 17/12 - 07/01</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="nav-tab active" onclick="showSection('status')">📍 Status</button>
+        <button class="nav-tab" onclick="showSection('resumao')">📊 Resumão</button>
+        <button class="nav-tab" onclick="showSection('pdfs')">📄 PDFs</button>
+        <button class="nav-tab" onclick="showSection('aeroporto')">🛫 Voos</button>
+        <button class="nav-tab" onclick="showSection('dicas')">💡 Dicas</button>
+        <button class="nav-tab" onclick="showSection('emergencia')">🆘 SOS</button>
+    </nav>
+
+    <!-- SEARCH BAR -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar... (ex: pad thai, templo, hotel)"
+               oninput="performSearch(this.value)">
+        <button id="searchClear" class="search-clear" onclick="clearSearch()">×</button>
+    </div>
+    <div id="searchResults" class="search-results" style="display: none;">
+        <div class="search-results-header">
+            <span id="searchResultsCount">0 resultados</span>
+            <button onclick="clearSearch()" class="search-results-close">Fechar</button>
+        </div>
+        <div id="searchResultsList" class="search-results-list"></div>
+    </div>
+
+
+    <!-- STATUS -->
+<section id="status" class="section active">
+    <!-- Day Tabs Navigation -->
+    <div class="day-nav-container">
+        <div id="dayTabs" class="day-tabs">
+            <!-- Populated via JS -->
+        </div>
+        <div id="syncStatus" class="sync-status">
+            <span class="sync-dot"></span>
+        </div>
+    </div>
+
+    <!-- Day Content (swipeable) -->
+    <div id="dayContent" class="day-content">
+        <!-- Populated via JS -->
+    </div>
+</section>
+
+
+    <!-- RESUMAO -->
+<section id="resumao" class="section">
+        <div class="region-header">
+            <h2>📊 Resumão da Viagem</h2>
+            <p>Tudo num lugar só</p>
+        </div>
+
+        <div class="resumao-grid mb-15">
+            <div class="resumao-card">
+                <div class="number">21</div>
+                <div class="label">dias de viagem</div>
+            </div>
+            <div class="resumao-card">
+                <div class="number">5</div>
+                <div class="label">cidades/ilhas</div>
+            </div>
+            <div class="resumao-card">
+                <div class="number">6</div>
+                <div class="label">hotéis</div>
+            </div>
+            <div class="resumao-card">
+                <div class="number">5</div>
+                <div class="label">voos</div>
+            </div>
+            <div class="resumao-card">
+                <div class="number">11</div>
+                <div class="label">passeios</div>
+            </div>
+            <div class="resumao-card">
+                <div class="number">2</div>
+                <div class="label">ferrys</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">🗺️ Roteiro Visual</div>
+            <div class="card-content">
+                <strong>São Paulo</strong> ✈️ <strong>Bangkok</strong> (4 noites)<br>
+                ↓ ✈️<br>
+                <strong>Chiang Mai</strong> (3 noites)<br>
+                ↓ ✈️<br>
+                <strong>Phuket</strong> (4 noites)<br>
+                ↓ 🚢<br>
+                <strong>Koh Phi Phi</strong> (4 noites) 🎆 Ano Novo!<br>
+                ↓ 🚢<br>
+                <strong>Krabi</strong> (3 noites)<br>
+                ↓ ✈️<br>
+                <strong>Bangkok</strong> (1 noite) ✈️ <strong>São Paulo</strong>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">📋 Códigos Importantes</div>
+            <table class="phrase-table">
+                <tr><td>Qatar Airways</td><td colspan="2"><code>74QULJ</code></td></tr>
+                <tr><td>Thai Airways</td><td colspan="2"><code>DV7I3W</code></td></tr>
+                <tr><td>Bangkok Airways</td><td colspan="2"><code>DVN5LP</code></td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">🏨 Booking IDs</div>
+            <table class="phrase-table">
+                <tr><td>Nares (Bangkok)</td><td colspan="2">924129454</td></tr>
+                <tr><td>Sanae' (Chiang Mai)</td><td colspan="2">924137246</td></tr>
+                <tr><td>Anona (Phuket)</td><td colspan="2">924160706</td></tr>
+                <tr><td>Viking (Phi Phi)</td><td colspan="2">924303590</td></tr>
+                <tr><td>Sea Seeker (Krabi)</td><td colspan="2">924157614</td></tr>
+                <tr><td>Siam Mandarina</td><td colspan="2">924309566</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">📞 Contatos Rápidos</div>
+            <table class="phrase-table">
+                <tr><td>Phi Phi Brazuca</td><td colspan="2">+55 11 97462-5852</td></tr>
+                <tr><td>Emergência Thai</td><td colspan="2">191</td></tr>
+                <tr><td>Polícia Turística</td><td colspan="2">1155</td></tr>
+                <tr><td>Consulado BR</td><td colspan="2">+66 81 837 3763</td></tr>
+            </table>
+        </div>
+
+        <div class="important-box success">
+            <strong>💡 Vocês não bebem álcool nem comem:</strong><br>
+            🌶️ Pimenta (dizer "Mai phet")<br>
+            🌿 Coentro (dizer "Mai sai phak chee")
+        </div>
+
+        <!-- CRONOGRAMA COMPLETO -->
+        <div class="region-header" style="margin-top: 20px;">
+            <h2>📅 Cronograma Completo</h2>
+            <p>17/12/2025 - 07/01/2026</p>
+        </div>
+
+        <h3 class="mb-15" style="color: var(--dark);">Dezembro 2025</h3>
+
+        <div class="schedule-day" data-date="2025-12-17">
+            <div class="schedule-date">17/12 (Qua) - VIAGEM</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">✈️</span><span>Voo Qatar GRU → DOH → BKK</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-18">
+            <div class="schedule-date">18/12 (Qui) - Bangkok</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">19:25</span><span>Chegada BKK</span></div>
+                <div class="schedule-item"><span class="schedule-time">🏨</span><span>Nares Hotel (Silom)</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-19">
+            <div class="schedule-date">19/12 (Sex) - Bangkok</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">7:15</span><span>🎫 Mercado do Trem + Flutuante</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-20">
+            <div class="schedule-date">20/12 (Sáb) - Bangkok</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">8:30</span><span>🎫 Templos de Bangkok</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-21">
+            <div class="schedule-date">21/12 (Dom) - Bangkok</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">6:15</span><span>🎫 Ayutthaya</span></div>
+                <div class="schedule-item"><span class="schedule-time">16:45</span><span>🎫 Tuk Tuk à Noite</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-22">
+            <div class="schedule-date">22/12 (Seg) - Bangkok → Chiang Mai</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">12:00</span><span>✈️ Voo BKK → CNX</span></div>
+                <div class="schedule-item"><span class="schedule-time">14:00</span><span>🏨 Sanae' Oldtown</span></div>
+                <div class="schedule-item"><span class="schedule-time">Tarde</span><span>🌅 Doi Suthep</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-23">
+            <div class="schedule-date">23/12 (Ter) - Chiang Mai</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">6:30</span><span>🎫 Templos de Chiang Mai</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-24">
+            <div class="schedule-date">24/12 (Qua) - Chiang Mai</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">6:30</span><span>🎫 Santuário de Elefantes 🐘</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-25">
+            <div class="schedule-date">25/12 (Qui) - Chiang Mai → Phuket 🎄</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">14:35</span><span>✈️ Voo CNX → HKT</span></div>
+                <div class="schedule-item"><span class="schedule-time">🏨</span><span>Anona Sunset (Karon)</span></div>
+                <div class="schedule-item"><span class="schedule-time">Tarde</span><span>🌅 Big Buddha</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-26">
+            <div class="schedule-date">26/12 (Sex) - Phuket</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">7:00</span><span>🎫 James Bond Island 🚤</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-27">
+            <div class="schedule-date">27/12 (Sáb) - Phuket</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">6:00</span><span>🎫 Similan Islands 🏝️</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-28">
+            <div class="schedule-date">28/12 (Dom) - Phuket</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">LIVRE</span><span>Opcional: Ilhas Coral e Racha</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-29">
+            <div class="schedule-date">29/12 (Seg) - Phuket → Phi Phi</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">🚢</span><span>Ferry Phuket → Phi Phi</span></div>
+                <div class="schedule-item"><span class="schedule-time">🏨</span><span>Viking Nature Resort</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-30">
+            <div class="schedule-date">30/12 (Ter) - Phi Phi</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">🎫</span><span>Long Tail Boat (4h)</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2025-12-31">
+            <div class="schedule-date">31/12 (Qua) - Phi Phi 🎆</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">7:00</span><span>🎫 Batismo de Mergulho 🤿</span></div>
+                <div class="schedule-item"><span class="schedule-time">Noite</span><span>🎆 Ano Novo na praia!</span></div>
+            </div>
+        </div>
+
+        <h3 class="mb-15 mt-15" style="color: var(--dark);">Janeiro 2026</h3>
+
+        <div class="schedule-day" data-date="2026-01-01">
+            <div class="schedule-date">01/01 (Qui) - Phi Phi 🎉</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">10:20</span><span>🎫 Gold Day Tour (Maya Bay)</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2026-01-02">
+            <div class="schedule-date">02/01 (Sex) - Phi Phi → Krabi</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">🚢</span><span>Ferry Phi Phi → Krabi</span></div>
+                <div class="schedule-item"><span class="schedule-time">🏨</span><span>Sea Seeker Resort (Ao Nang)</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2026-01-03">
+            <div class="schedule-date">03/01 (Sáb) - Krabi</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">9:00</span><span>🎫 Tour 4 Ilhas</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2026-01-04">
+            <div class="schedule-date">04/01 (Dom) - Krabi</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">LIVRE</span><span>Opcional: Emerald Pool</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2026-01-05">
+            <div class="schedule-date">05/01 (Seg) - Krabi → Bangkok</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">9:35</span><span>✈️ Voo KBV → BKK</span></div>
+                <div class="schedule-item"><span class="schedule-time">🏨</span><span>Siam Mandarina</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2026-01-06">
+            <div class="schedule-date">06/01 (Ter) - Bangkok → Brasil</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">Dia</span><span>🛍️ Compras!</span></div>
+                <div class="schedule-item"><span class="schedule-time">20:30</span><span>✈️ Voo BKK → DOH → GRU</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day" data-date="2026-01-07">
+            <div class="schedule-date">07/01 (Qua) - Chegada</div>
+            <div class="schedule-content">
+                <div class="schedule-item"><span class="schedule-time">09:50</span><span>🏠 Chegada GRU</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDFS -->
+<section id="pdfs" class="section">
+        <div class="region-header">
+            <h2>📄 Documentos PDF</h2>
+            <p>Todos os documentos da viagem</p>
+        </div>
+
+        <div class="important-box warning">
+            <strong>💡 Dica:</strong> Clique em "Abrir PDF" para visualizar no leitor do celular. Os previews podem não funcionar em todos os dispositivos.
+        </div>
+
+        <!-- SAÚDE -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">💉</span>
+                <div>
+                    <div class="card-title">Documentos de Saúde</div>
+                    <div class="card-subtitle">Vacinas e comprovantes</div>
+                </div>
+            </div>
+            <div class="pdf-list">
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Guilherme - Vacina Febre Amarela</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1GoO1t6ewLNIKPionvWIJz7RrS1Hzq74t/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Natasha - Vacina Febre Amarela</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1p70gOn8D53ArL1GkACe4OCKY1cddpzqX/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEGURO VIAGEM -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🛡️</span>
+                <div>
+                    <div class="card-title">Seguro Viagem</div>
+                    <div class="card-subtitle">MTA 150 - Apólices em português e inglês</div>
+                </div>
+            </div>
+            <div class="pdf-list">
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Comprovante de Compra - MTA 150</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1NgoKusi6H1ZYQsSb7waKR5a6f5q9oN4Q/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item highlight">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">🇬🇧</span>
+                        <span class="pdf-name">Guilherme - Seguro em INGLÊS</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1cm5CLOljsxDwoGpfcDNZJGdFfldNF-Uf/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item highlight">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">🇬🇧</span>
+                        <span class="pdf-name">Natasha - Seguro em INGLÊS</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1wBWU6AXXpRTH8JFT_qlSigX6dLo9LOjC/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSAGENS -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">✈️</span>
+                <div>
+                    <div class="card-title">Passagens Aéreas</div>
+                    <div class="card-subtitle">Qatar, Thai Airways, Bangkok Airways</div>
+                </div>
+            </div>
+            <div class="pdf-list">
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Qatar Airways - Comprovante Geral</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1w99LDR6nrr16mfITdMYXyHKu0dEcKH96/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Qatar - Guilherme (E-Ticket)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1cfQxJI5xlDGOIZDhKMp1lE941QCfyhFk/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Qatar - Natasha (E-Ticket)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1_HHT626jPWqujZGIdeORAN1UJ7SA34-I/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Thai Airways - BKK→CNX (22/12)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1OPPGlo-M3AfNOArwCUcnLkyMbbVO50AY/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Thai - Guilherme (22/12)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/17ZGTDj2tp0EyHZLBoaS2QmTUiR4Gb4_8/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Thai - Natasha (22/12)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1tAYPq0dT31ngQ2WhUqOIYzUbqrLrbLD7/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok Airways - Comprovante (2 trechos)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1VOJjKNAzF512Z6zon6xz06Usl7_MCKrB/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok Airways - Guilherme (25/12 e 05/01)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/13sIV9pYLtKuICSOcBdmBd2BXj9NmNzWc/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok Airways - Natasha (25/12 e 05/01)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1wPt_oq93A8spF1XrW6S0J_lHd8T3LhJK/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOTÉIS -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🏨</span>
+                <div>
+                    <div class="card-title">Hotéis</div>
+                    <div class="card-subtitle">Vouchers e confirmações Agoda</div>
+                </div>
+            </div>
+            <div class="pdf-list">
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok - Nares Hotel (18-22/12)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1yGEUIdXu3k6e2PbSRqQLt7T35zKVxOVa/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok - Confirmação #924129454</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1fHyMtld8tKIId_C-TKhnyfNyq2dQ_fwu/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Chiang Mai - Sanae' (22-25/12)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1rajTk4iNe4nb5SgJlI19ph1zeMcj81Y7/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Chiang Mai - Confirmação #924137246</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/176K2Dkw4HGeMow-OWpKzJA-u6lh1AHNM/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Phuket - Anona Sunset (25-29/12)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1nXQ7VVzQjNv97Kk3v23gdleRaa_mMkEL/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Phuket - Confirmação #924160706</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1LS1e89NE5107TMWDZ4IrsKo97JygegHs/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Koh Phi Phi - Viking Nature (29/12-02/01)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1ZOtHLf1i6yxsxrHXpdf1er2YAMW5Zsf1/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Koh Phi Phi - Confirmação #924303590</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1vuJtI8A5PLvrl_C-Z9fckNuc-jjYz9mc/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Krabi - Sea Seeker (02-05/01)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1sI2radbAeYcfJNs8I1yu6wL6w5q0rFb2/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Krabi - Confirmação #924157614</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1sbrkSW9sg3LnK9LraGw4yGEHWvp0qTWf/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok (última noite) - Siam Mandarina (05-06/01)</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1TrUTlZrGrJeAEUM5oltbi3SqMdOpktRK/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Bangkok (última noite) - Confirmação #924309566</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/11LcDrvQLOj80vaFShEwL7vjiBTm8XrtJ/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSEIOS -->
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🎫</span>
+                <div>
+                    <div class="card-title">Passeios</div>
+                    <div class="card-subtitle">Phi Phi Brazuca</div>
+                </div>
+            </div>
+            <div class="pdf-list">
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">Passeios pela Tailândia - Phi Phi Brazuca</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1XRz-dfnHIZAkai55Jq_01IpBcHvd0JUU/view" target="_blank" class="pdf-btn">Abrir PDF</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- AEROPORTO -->
+<section id="aeroporto" class="section">
+        <div class="region-header">
+            <h2>🛫 Aeroporto & Voos</h2>
+            <p>Tudo sobre voos e aeroportos</p>
+        </div>
+
+        <!-- VOOS -->
+        <h3 class="mb-15" style="color: var(--dark);">✈️ Nossos Voos</h3>
+
+        <div class="flight-card">
+            <div style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">17/12 (Qua) - IDA</div>
+            <div class="flight-route">
+                <div class="flight-city"><div class="flight-code">GRU</div><div class="flight-name">São Paulo</div></div>
+                <div class="flight-line"></div>
+                <div class="flight-city"><div class="flight-code">BKK</div><div class="flight-name">Bangkok</div></div>
+            </div>
+            <div class="flight-info">
+                <span>Qatar Airways (via Doha)</span>
+                <span class="booking-code">74QULJ</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">Chegada: 18/12 às 19:25</div>
+        </div>
+
+        <div class="flight-card">
+            <div style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">22/12 (Seg)</div>
+            <div class="flight-route">
+                <div class="flight-city"><div class="flight-code">BKK</div><div class="flight-name">Bangkok</div></div>
+                <div class="flight-line"></div>
+                <div class="flight-city"><div class="flight-code">CNX</div><div class="flight-name">Chiang Mai</div></div>
+            </div>
+            <div class="flight-info">
+                <span>Thai Airways TG 106</span>
+                <span class="booking-code">DV7I3W</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">12:00 → 13:20 (1h20)</div>
+        </div>
+
+        <div class="flight-card">
+            <div style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">25/12 (Qui) 🎄</div>
+            <div class="flight-route">
+                <div class="flight-city"><div class="flight-code">CNX</div><div class="flight-name">Chiang Mai</div></div>
+                <div class="flight-line"></div>
+                <div class="flight-city"><div class="flight-code">HKT</div><div class="flight-name">Phuket</div></div>
+            </div>
+            <div class="flight-info">
+                <span>Bangkok Airways PG 248</span>
+                <span class="booking-code">DVN5LP</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">14:35 → 16:40 (2h05)</div>
+        </div>
+
+        <div class="flight-card">
+            <div style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">05/01 (Seg)</div>
+            <div class="flight-route">
+                <div class="flight-city"><div class="flight-code">KBV</div><div class="flight-name">Krabi</div></div>
+                <div class="flight-line"></div>
+                <div class="flight-city"><div class="flight-code">BKK</div><div class="flight-name">Bangkok</div></div>
+            </div>
+            <div class="flight-info">
+                <span>Bangkok Airways PG 262</span>
+                <span class="booking-code">DVN5LP</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">09:35 → 11:00 (1h25)</div>
+        </div>
+
+        <div class="flight-card">
+            <div style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">06/01 (Ter) - VOLTA</div>
+            <div class="flight-route">
+                <div class="flight-city"><div class="flight-code">BKK</div><div class="flight-name">Bangkok</div></div>
+                <div class="flight-line"></div>
+                <div class="flight-city"><div class="flight-code">GRU</div><div class="flight-name">São Paulo</div></div>
+            </div>
+            <div class="flight-info">
+                <span>Qatar Airways (via Doha)</span>
+                <span class="booking-code">74QULJ</span>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">20:30 → 09:50+1 (chegada 07/01)</div>
+        </div>
+
+        <div class="tip-card mt-15 mb-15">
+            💡 Bangkok Airways inclui <strong>Lounge Blue Ribbon Club</strong> no aeroporto!
+        </div>
+
+        <!-- GUIA AEROPORTO -->
+        <h3 class="mb-15" style="color: var(--dark);">📋 Guia de Aeroporto</h3>
+
+        <div class="important-box danger">
+            <strong>⚠️ IMPORTANTE: TDAC (Thailand Digital Arrival Card)</strong><br>
+            Obrigatório para entrar na Tailândia!<br>
+            Preencher até 72h antes da chegada em:<br>
+            <code>https://tdac.immigration.go.th</code>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">📱 QR Codes para Salvar</div>
+
+            <div class="qr-placeholder">
+                <div class="icon">📲</div>
+                <p><strong>TDAC - Thailand Digital Arrival Card</strong><br>
+                Acessar: tdac.immigration.go.th<br>
+                Preencher 72h antes de CADA entrada na Tailândia</p>
+            </div>
+
+            <div class="qr-placeholder">
+                <div class="icon">✈️</div>
+                <p><strong>Qatar Airways - Código: 74QULJ</strong><br>
+                App: Qatar Airways<br>
+                Check-in online 24h antes</p>
+            </div>
+
+            <div class="qr-placeholder">
+                <div class="icon">🇹🇭</div>
+                <p><strong>Thai Airways - Código: DV7I3W</strong><br>
+                BKK → CNX (22/12 12:00)</p>
+            </div>
+
+            <div class="qr-placeholder">
+                <div class="icon">🌴</div>
+                <p><strong>Bangkok Airways - Código: DVN5LP</strong><br>
+                CNX → HKT (25/12 14:35)<br>
+                KBV → BKK (05/01 09:35)<br>
+                <strong>Lounge incluso!</strong> Blue Ribbon Club</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">🛬 Chegada em Bangkok (18/12 19:25)</div>
+            <div class="card-content">
+                <ol style="padding-left: 20px;">
+                    <li><strong>Desembarque</strong> - Seguir placas "Immigration"</li>
+                    <li><strong>TDAC</strong> - Se não preencheu, há quiosques</li>
+                    <li><strong>Imigração</strong> - Fila para estrangeiros<br>
+                        <em>Documentos: Passaporte, TDAC, hotel (pode mostrar no celular)</em></li>
+                    <li><strong>Bagagem</strong> - Esteiras 6-23 em Suvarnabhumi</li>
+                    <li><strong>Alfândega</strong> - Canal verde se nada a declarar</li>
+                    <li><strong>SIM Card</strong> - Comprar logo na saída (AIS, DTAC, TrueMove)</li>
+                    <li><strong>Grab</strong> - Pedir no app para o hotel</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">📋 Checklist Pré-Voo</div>
+            <div class="card-content">
+                <ul>
+                    <li>☐ TDAC preenchido (até 72h antes)</li>
+                    <li>☐ Check-in online feito (24h antes)</li>
+                    <li>☐ Passaporte válido (6+ meses)</li>
+                    <li>☐ Seguro viagem em inglês no celular</li>
+                    <li>☐ Comprovante de hotel (booking)</li>
+                    <li>☐ Passagem de volta (podem pedir)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">🚫 Itens Proibidos/Restrições</div>
+            <div class="card-content">
+                <ul>
+                    <li><strong>Cigarro eletrônico (vape):</strong> PROIBIDO! Multa pesada</li>
+                    <li><strong>Dinheiro:</strong> Declarar se >USD 20.000</li>
+                    <li><strong>Álcool:</strong> 1 litro duty-free</li>
+                    <li><strong>Cigarro:</strong> 200 unidades</li>
+                    <li><strong>Imagens de Buda:</strong> Precisa autorização para sair</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">⏱️ Tempo de Processo</div>
+            <div class="card-content">
+                <ul>
+                    <li><strong>Normal:</strong> 30-60 minutos</li>
+                    <li><strong>Horário de pico:</strong> 90+ minutos</li>
+                    <li><strong>Vocês chegam 19:25:</strong> Horário ok!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title mb-10">💱 Dinheiro no Aeroporto</div>
+            <div class="card-content">
+                <strong>⚠️ Taxa ruim no aeroporto!</strong><br><br>
+                • Trocar só o mínimo (500-1000 THB)<br>
+                • <strong>SuperRich</strong> em Bangkok tem melhor taxa<br>
+                • ATM cobra ~220 THB por saque<br>
+                • Cartão funciona em lugares grandes
+            </div>
+        </div>
+
+        <div class="important-box">
+            <strong>💡 Dica:</strong> Bangkok Airways inclui acesso ao <strong>Blue Ribbon Club Lounge</strong> no aeroporto! Aproveitem nos voos domésticos.
+        </div>
+    </section>
+
+    <!-- DICAS -->
+<section id="dicas" class="section">
+        <div class="region-header">
+            <h2>💡 Dicas</h2>
+            <p>Frases, gorjetas, transporte</p>
+        </div>
+
+        <!-- FRASES ESSENCIAIS PARA VOCÊS -->
+        <div class="important-box danger mb-15">
+            <strong>🚫 FRASES ESSENCIAIS PARA VOCÊS</strong><br><br>
+            <table class="phrase-table">
+                <tr>
+                    <td>Sem pimenta</td>
+                    <td>ไม่เผ็ด</td>
+                    <td>Mai phet</td>
+                </tr>
+                <tr>
+                    <td>Sem coentro</td>
+                    <td>ไม่ใส่ผักชี</td>
+                    <td>Mai sai phak chee</td>
+                </tr>
+                <tr>
+                    <td>Não consigo comer coentro</td>
+                    <td>กินผักชีไม่ได้</td>
+                    <td>Gin phak chee mai dai</td>
+                </tr>
+                <tr>
+                    <td>Não coloque coentro</td>
+                    <td>อย่าใส่ผักชี</td>
+                    <td>Yah sai phak chee</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="collapsible open">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                🗣️ Frases Básicas
+            </div>
+            <div class="collapsible-content">
+                <p class="text-small text-muted mb-10">💡 Homens terminam com "krap", mulheres com "ka"</p>
+                <table class="phrase-table">
+                    <tr><td>Olá</td><td>สวัสดี</td><td>Sawadee krap/ka</td></tr>
+                    <tr><td>Obrigado(a)</td><td>ขอบคุณ</td><td>Khop khun krap/ka</td></tr>
+                    <tr><td>Sim</td><td>ใช่</td><td>Chai</td></tr>
+                    <tr><td>Não</td><td>ไม่</td><td>Mai</td></tr>
+                    <tr><td>Desculpa</td><td>ขอโทษ</td><td>Khor thot</td></tr>
+                    <tr><td>Não faz mal</td><td>ไม่เป็นไร</td><td>Mai pen rai</td></tr>
+                    <tr><td>Não entendo</td><td>ไม่เข้าใจ</td><td>Mai khao jai</td></tr>
+                    <tr><td>Fala inglês?</td><td>พูดภาษาอังกฤษได้ไหม</td><td>Puut paasaa angrit dai mai?</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                🍜 Frases para Comida
+            </div>
+            <div class="collapsible-content">
+                <table class="phrase-table">
+                    <tr><td>Eu quero...</td><td>ขอ</td><td>Kor... (ex: Kor pad thai)</td></tr>
+                    <tr><td>Delicioso!</td><td>อร่อย</td><td>Aroi!</td></tr>
+                    <tr><td>Água, por favor</td><td>น้ำหน่อย</td><td>Nam noi</td></tr>
+                    <tr><td>Café</td><td>กาแฟ</td><td>Gah-fae</td></tr>
+                    <tr><td>Conta, por favor</td><td>เช็คบิล</td><td>Check bin</td></tr>
+                    <tr><td>O que recomenda?</td><td>มีอะไรแนะนำ</td><td>Mii arai naenam?</td></tr>
+                    <tr><td>Sem pimenta</td><td>ไม่เผ็ด</td><td>Mai phet</td></tr>
+                    <tr><td>Pouca pimenta</td><td>เผ็ดนิดหน่อย</td><td>Phet nit noi</td></tr>
+                    <tr><td>Sem coentro</td><td>ไม่ใส่ผักชี</td><td>Mai sai phak chee</td></tr>
+                    <tr><td>Sem açúcar</td><td>ไม่ใส่น้ำตาล</td><td>Mai sai nam taan</td></tr>
+                    <tr><td>Vegetariano</td><td>เจ</td><td>Jeh</td></tr>
+                    <tr><td>Muito gostoso!</td><td>อร่อยมาก</td><td>Aroi maak!</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                💰 Frases para Compras
+            </div>
+            <div class="collapsible-content">
+                <table class="phrase-table">
+                    <tr><td>Quanto custa?</td><td>เท่าไหร่</td><td>Tao rai?</td></tr>
+                    <tr><td>Muito caro!</td><td>แพงมาก</td><td>Paeng maak!</td></tr>
+                    <tr><td>Desconto?</td><td>ลดได้ไหม</td><td>Lot dai mai?</td></tr>
+                    <tr><td>Pode ser mais barato?</td><td>ถูกกว่านี้ได้ไหม</td><td>Thuuk gwaa nii dai mai?</td></tr>
+                    <tr><td>Eu só quero olhar</td><td>ดูเฉยๆ</td><td>Duu choei choei</td></tr>
+                    <tr><td>Eu quero este</td><td>เอาอันนี้</td><td>Ao an nii</td></tr>
+                    <tr><td>Não quero</td><td>ไม่เอา</td><td>Mai ao</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                🔢 Números
+            </div>
+            <div class="collapsible-content">
+                <table class="phrase-table">
+                    <tr><td>1</td><td>หนึ่ง</td><td>Neung</td></tr>
+                    <tr><td>2</td><td>สอง</td><td>Song</td></tr>
+                    <tr><td>3</td><td>สาม</td><td>Saam</td></tr>
+                    <tr><td>4</td><td>สี่</td><td>Sii</td></tr>
+                    <tr><td>5</td><td>ห้า</td><td>Haa</td></tr>
+                    <tr><td>6</td><td>หก</td><td>Hok</td></tr>
+                    <tr><td>7</td><td>เจ็ด</td><td>Jet</td></tr>
+                    <tr><td>8</td><td>แปด</td><td>Paet</td></tr>
+                    <tr><td>9</td><td>เก้า</td><td>Kao</td></tr>
+                    <tr><td>10</td><td>สิบ</td><td>Sip</td></tr>
+                    <tr><td>20</td><td>ยี่สิบ</td><td>Yii sip</td></tr>
+                    <tr><td>100</td><td>ร้อย</td><td>Roi</td></tr>
+                    <tr><td>1000</td><td>พัน</td><td>Phan</td></tr>
+                </table>
+                <p class="text-small text-muted mt-15">💡 35 = "saam sip haa" (3-10-5)</p>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                🚕 Transporte & Direções
+            </div>
+            <div class="collapsible-content">
+                <table class="phrase-table">
+                    <tr><td>Ir para...</td><td>ไป</td><td>Pai... (ex: Pai Wat Pho)</td></tr>
+                    <tr><td>Vira à esquerda</td><td>เลี้ยวซ้าย</td><td>Liao sai</td></tr>
+                    <tr><td>Vira à direita</td><td>เลี้ยวขวา</td><td>Liao kwaa</td></tr>
+                    <tr><td>Segue em frente</td><td>ตรงไป</td><td>Trong pai</td></tr>
+                    <tr><td>Para aqui</td><td>จอดตรงนี้</td><td>Jot trong nii</td></tr>
+                    <tr><td>Onde fica...?</td><td>...อยู่ที่ไหน</td><td>...yuu tii nai?</td></tr>
+                    <tr><td>Onde é o banheiro?</td><td>ห้องน้ำอยู่ที่ไหน</td><td>Hong nam yuu tii nai?</td></tr>
+                    <tr><td>Usa taxímetro?</td><td>ใช้มิเตอร์ไหม</td><td>Chai meter mai?</td></tr>
+                    <tr><td>Segue o Google Maps</td><td>ตาม Google Map ไป</td><td>Taam Google Map pai</td></tr>
+                    <tr><td>Estou perdido</td><td>ฉันหลงทาง</td><td>Chan long taang</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                🆘 Emergência
+            </div>
+            <div class="collapsible-content">
+                <table class="phrase-table">
+                    <tr><td>Socorro!</td><td>ช่วยด้วย</td><td>Chuay duay!</td></tr>
+                    <tr><td>Preciso de ajuda</td><td>ต้องการความช่วยเหลือ</td><td>Tong gaan kwaam chuay leua</td></tr>
+                    <tr><td>Chame a polícia</td><td>เรียกตำรวจ</td><td>Riak tamruat</td></tr>
+                    <tr><td>Hospital</td><td>โรงพยาบาล</td><td>Roong payabaan</td></tr>
+                    <tr><td>Estou doente</td><td>ไม่สบาย</td><td>Mai sabai</td></tr>
+                    <tr><td>Dói aqui</td><td>เจ็บตรงนี้</td><td>Jep trong nii</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                💰 Gorjetas
+            </div>
+            <div class="collapsible-content">
+                <table class="phrase-table">
+                    <tr><td>Restaurante</td><td colspan="2">10-20 THB ou arredondar</td></tr>
+                    <tr><td>Táxi/Grab</td><td colspan="2">Arredondar para cima</td></tr>
+                    <tr><td>Hotel (mala)</td><td colspan="2">20-50 THB</td></tr>
+                    <tr><td>Massagem</td><td colspan="2">50-100 THB</td></tr>
+                    <tr><td>Tour/guia</td><td colspan="2">100-200 THB</td></tr>
+                </table>
+                <p class="text-small text-muted mt-15">Não é obrigatório, mas apreciado</p>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                ⚠️ Golpes Comuns
+            </div>
+            <div class="collapsible-content">
+                <div class="poi-card" style="border-left-color: #f44336;">
+                    <div class="poi-name">"Está fechado hoje"</div>
+                    <div class="poi-details">
+                        Dizem que templo está fechado<br>
+                        Oferecem loja de jóias<br>
+                        <strong>Ignorar!</strong>
+                    </div>
+                </div>
+                <div class="poi-card" style="border-left-color: #f44336;">
+                    <div class="poi-name">Tuk Tuk "tour barato"</div>
+                    <div class="poi-details">
+                        Tour por 20 THB<br>
+                        Leva para lojas<br>
+                        <strong>Recusar!</strong>
+                    </div>
+                </div>
+                <div class="poi-card" style="border-left-color: #f44336;">
+                    <div class="poi-name">Jet Ski "danificado"</div>
+                    <div class="poi-details">
+                        <strong>Evitar alugar!</strong><br>
+                        Se alugar: fotografar TUDO
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                🏛️ Etiqueta em Templos
+            </div>
+            <div class="collapsible-content">
+                <ul style="padding-left: 20px;">
+                    <li>Tirar sapatos na entrada</li>
+                    <li>Cobrir ombros e joelhos</li>
+                    <li>Não apontar pés para Buda</li>
+                    <li>Mulheres não podem tocar monges</li>
+                    <li>Silêncio e respeito</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMERGENCIA -->
+<section id="emergencia" class="section">
+        <div class="region-header" style="background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);">
+            <h2>🆘 Emergência</h2>
+            <p>Contatos importantes</p>
+        </div>
+
+        <div class="emergency-card">
+            <h3>📞 Números de Emergência</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <div><div class="text-small">Emergência</div><div class="emergency-number">191</div></div>
+                <div><div class="text-small">Polícia Turística</div><div class="emergency-number">1155</div></div>
+                <div><div class="text-small">Ambulância</div><div class="emergency-number">1669</div></div>
+                <div><div class="text-small">Bombeiros</div><div class="emergency-number">199</div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🇧🇷</span>
+                <div>
+                    <div class="card-title">Consulado do Brasil</div>
+                    <div class="card-subtitle">Bangkok</div>
+                </div>
+            </div>
+            <div class="card-content">
+                <strong>Endereço:</strong> 34th Floor, Lumpini Tower, 1168/101 Rama IV Road<br><br>
+                <strong>Telefone:</strong> +66 2 679 8567<br>
+                <strong>Emergência 24h:</strong> +66 81 837 3763
+            </div>
+        </div>
+
+        <h4 class="mb-10 mt-15">🏥 Hospitais</h4>
+        <div class="poi-grid">
+            <div class="poi-card">
+                <div class="poi-name">Bumrungrad Hospital</div>
+                <span class="poi-tag">Bangkok</span>
+                <div class="poi-details">+66 2 066 8888</div>
+            </div>
+            <div class="poi-card">
+                <div class="poi-name">Chiang Mai Ram</div>
+                <span class="poi-tag">Chiang Mai</span>
+                <div class="poi-details">+66 53 920 300</div>
+            </div>
+            <div class="poi-card">
+                <div class="poi-name">Bangkok Hospital</div>
+                <span class="poi-tag">Phuket</span>
+                <div class="poi-details">+66 76 254 425</div>
+            </div>
+            <div class="poi-card">
+                <div class="poi-name">Krabi Hospital</div>
+                <span class="poi-tag">Krabi</span>
+                <div class="poi-details">+66 75 611 212</div>
+            </div>
+        </div>
+
+        <div class="card mt-15" style="background: #e3f2fd;">
+            <div class="card-title mb-10">📋 Seguro Viagem</div>
+            <div class="card-content">
+                <strong>Apólice:</strong> MTA 150<br>
+                <strong>Período:</strong> 17/12/2025 - 07/01/2026<br><br>
+                PDFs em inglês salvos no celular!
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        Tailândia 2025/26 | Gui & Natasha<br>
+        Atualizado: Dezembro 2025
+    </footer>
+
+    <script>
+/* =============================================
+   VIAGEM TAILANDIA - SCRIPTS
+   Day-centric Status View with Swipe Navigation
+   ============================================= */
+
+// =============================================
+// FIREBASE SYNC CONFIG
+// =============================================
+
+const FIREBASE_CONFIG = {
+    databaseURL: 'https://viagem-tailandia-default-rtdb.firebaseio.com',
+    syncInterval: 5000,
+    enabled: false
+};
+
+if (FIREBASE_CONFIG.databaseURL) {
+    FIREBASE_CONFIG.enabled = true;
+}
+
+let lastSyncTime = { todos: 0 };
+let isSyncing = false;
+
+// =============================================
+// DAY DATA - Complete trip information per day
+// =============================================
+
+const DAY_DATA = {
+    '2025-12-17': {
+        label: '17/12 (Qua)',
+        city: 'Viagem',
+        summary: 'Voo GRU → BKK',
+        flight: { type: 'departure', route: 'GRU → DOH', time: '21:30', airline: 'Qatar Airways', code: '74QULJ' },
+        hotel: null,
+        tour: null,
+        pdfs: [
+            { name: 'Qatar Airways - Comprovante Geral', url: 'https://drive.google.com/file/d/1w99LDR6nrr16mfITdMYXyHKu0dEcKH96/view' },
+            { name: 'Qatar - Guilherme (E-Ticket)', url: 'https://drive.google.com/file/d/1cfQxJI5xlDGOIZDhKMp1lE941QCfyhFk/view' },
+            { name: 'Qatar - Natasha (E-Ticket)', url: 'https://drive.google.com/file/d/1_HHT626jPWqujZGIdeORAN1UJ7SA34-I/view' }
+        ],
+        activities: [
+            { time: '21:30', desc: '✈️ Voo Qatar GRU → DOH → BKK' }
+        ]
+    },
+    '2025-12-18': {
+        label: '18/12 (Qui)',
+        city: 'Bangkok',
+        summary: 'Chegada Bangkok',
+        flight: { type: 'arrival', route: 'DOH → BKK', time: '19:25', airline: 'Qatar Airways', code: '74QULJ' },
+        hotel: {
+            name: 'Nares Hotel',
+            area: 'Silom',
+            checkIn: true,
+            checkOut: false,
+            bookingId: '924129454',
+            address: '213 Phuttha Osot Alley, Silom',
+            checkInTime: '14:00',
+            checkOutTime: '12:00'
+        },
+        tour: null,
+        pdfs: [
+            { name: 'Bangkok - Nares Hotel (18-22/12)', url: 'https://drive.google.com/file/d/1yGEUIdXu3k6e2PbSRqQLt7T35zKVxOVa/view' },
+            { name: 'Bangkok - Confirmação #924129454', url: 'https://drive.google.com/file/d/1fHyMtld8tKIId_C-TKhnyfNyq2dQ_fwu/view' },
+            { name: 'Guilherme - Seguro em INGLÊS', url: 'https://drive.google.com/file/d/1cm5CLOljsxDwoGpfcDNZJGdFfldNF-Uf/view' },
+            { name: 'Natasha - Seguro em INGLÊS', url: 'https://drive.google.com/file/d/1wBWU6AXXpRTH8JFT_qlSigX6dLo9LOjC/view' }
+        ],
+        activities: [
+            { time: '19:25', desc: 'Chegada BKK' },
+            { time: '~20:30', desc: 'Immigration + Bagagem' },
+            { time: '~21:00', desc: '🏨 Check-in Nares Hotel' }
+        ]
+    },
+    '2025-12-19': {
+        label: '19/12 (Sex)',
+        city: 'Bangkok',
+        summary: 'Mercado do Trem + Flutuante',
+        flight: null,
+        hotel: { name: 'Nares Hotel', area: 'Silom', staying: true, bookingId: '924129454' },
+        tour: { name: 'Mercado do Trem + Flutuante', time: '7:15', provider: 'Phi Phi Brazuca' },
+        pdfs: [
+            { name: 'Passeios - Phi Phi Brazuca', url: 'https://drive.google.com/file/d/1XRz-dfnHIZAkai55Jq_01IpBcHvd0JUU/view' }
+        ],
+        activities: [
+            { time: '7:15', desc: '🎫 Mercado do Trem + Flutuante' }
+        ]
+    },
+    '2025-12-20': {
+        label: '20/12 (Sáb)',
+        city: 'Bangkok',
+        summary: 'Templos de Bangkok',
+        flight: null,
+        hotel: { name: 'Nares Hotel', area: 'Silom', staying: true, bookingId: '924129454' },
+        tour: { name: 'Templos de Bangkok', time: '8:30', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '8:30', desc: '🎫 Templos de Bangkok' }
+        ]
+    },
+    '2025-12-21': {
+        label: '21/12 (Dom)',
+        city: 'Bangkok',
+        summary: 'Ayutthaya + Tuk Tuk Noite',
+        flight: null,
+        hotel: { name: 'Nares Hotel', area: 'Silom', staying: true, bookingId: '924129454' },
+        tour: { name: 'Ayutthaya + Tuk Tuk Noite', time: '6:15 / 16:45', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '6:15', desc: '🎫 Ayutthaya' },
+            { time: '16:45', desc: '🎫 Tuk Tuk à Noite' }
+        ]
+    },
+    '2025-12-22': {
+        label: '22/12 (Seg)',
+        city: 'Chiang Mai',
+        summary: 'Bangkok → Chiang Mai',
+        flight: { type: 'domestic', route: 'BKK → CNX', time: '12:00 → 13:20', airline: 'Thai Airways TG 106', code: 'DV7I3W' },
+        hotel: {
+            name: "Sanae' Oldtown Hotel",
+            area: 'Old City',
+            checkIn: true,
+            checkOut: false,
+            bookingId: '924137246',
+            address: 'Sripoom Road, Old City',
+            extras: ['Café da manhã incluso!']
+        },
+        tour: null,
+        pdfs: [
+            { name: 'Thai Airways - BKK→CNX (22/12)', url: 'https://drive.google.com/file/d/1OPPGlo-M3AfNOArwCUcnLkyMbbVO50AY/view' },
+            { name: 'Thai - Guilherme (22/12)', url: 'https://drive.google.com/file/d/17ZGTDj2tp0EyHZLBoaS2QmTUiR4Gb4_8/view' },
+            { name: 'Thai - Natasha (22/12)', url: 'https://drive.google.com/file/d/1tAYPq0dT31ngQ2WhUqOIYzUbqrLrbLD7/view' },
+            { name: "Chiang Mai - Sanae' (22-25/12)", url: 'https://drive.google.com/file/d/1rajTk4iNe4nb5SgJlI19ph1zeMcj81Y7/view' },
+            { name: 'Chiang Mai - Confirmação #924137246', url: 'https://drive.google.com/file/d/176K2Dkw4HGeMow-OWpKzJA-u6lh1AHNM/view' }
+        ],
+        activities: [
+            { time: '~10:00', desc: 'Check-out Nares Hotel' },
+            { time: '12:00', desc: "✈️ Voo BKK → CNX" },
+            { time: '14:00', desc: "🏨 Sanae' Oldtown" },
+            { time: 'Tarde', desc: '🌅 Doi Suthep (por conta)' }
+        ]
+    },
+    '2025-12-23': {
+        label: '23/12 (Ter)',
+        city: 'Chiang Mai',
+        summary: 'Templos de Chiang Mai',
+        flight: null,
+        hotel: { name: "Sanae' Oldtown Hotel", area: 'Old City', staying: true, bookingId: '924137246' },
+        tour: { name: 'Templos de Chiang Mai', time: '6:30', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '6:30', desc: '🎫 Templos de Chiang Mai' }
+        ]
+    },
+    '2025-12-24': {
+        label: '24/12 (Qua)',
+        city: 'Chiang Mai',
+        summary: 'Santuário de Elefantes 🐘',
+        flight: null,
+        hotel: { name: "Sanae' Oldtown Hotel", area: 'Old City', staying: true, bookingId: '924137246' },
+        tour: { name: 'Santuário de Elefantes', time: '6:30', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '6:30', desc: '🎫 Santuário de Elefantes 🐘' }
+        ]
+    },
+    '2025-12-25': {
+        label: '25/12 (Qui) 🎄',
+        city: 'Phuket',
+        summary: 'Chiang Mai → Phuket + Big Buddha',
+        flight: { type: 'domestic', route: 'CNX → HKT', time: '14:35 → 16:40', airline: 'Bangkok Airways PG 248', code: 'DVN5LP' },
+        hotel: {
+            name: 'Anona Sunset Boutique',
+            area: 'Karon',
+            checkIn: true,
+            checkOut: false,
+            bookingId: '924160706',
+            address: '707 Patak Rd, Karon',
+            extras: ['Café da manhã incluso!']
+        },
+        tour: null,
+        pdfs: [
+            { name: 'Bangkok Airways - Comprovante (2 trechos)', url: 'https://drive.google.com/file/d/1VOJjKNAzF512Z6zon6xz06Usl7_MCKrB/view' },
+            { name: 'Bangkok Airways - Guilherme (25/12 e 05/01)', url: 'https://drive.google.com/file/d/13sIV9pYLtKuICSOcBdmBd2BXj9NmNzWc/view' },
+            { name: 'Bangkok Airways - Natasha (25/12 e 05/01)', url: 'https://drive.google.com/file/d/1wPt_oq93A8spF1XrW6S0J_lHd8T3LhJK/view' },
+            { name: 'Phuket - Anona Sunset (25-29/12)', url: 'https://drive.google.com/file/d/1nXQ7VVzQjNv97Kk3v23gdleRaa_mMkEL/view' },
+            { name: 'Phuket - Confirmação #924160706', url: 'https://drive.google.com/file/d/1LS1e89NE5107TMWDZ4IrsKo97JygegHs/view' }
+        ],
+        activities: [
+            { time: '~12:00', desc: "Check-out Sanae'" },
+            { time: '14:35', desc: '✈️ Voo CNX → HKT' },
+            { time: '~17:00', desc: '🏨 Anona Sunset (Karon)' },
+            { time: 'Tarde', desc: '🌅 Big Buddha (por conta)' }
+        ]
+    },
+    '2025-12-26': {
+        label: '26/12 (Sex)',
+        city: 'Phuket',
+        summary: 'James Bond Island 🚤',
+        flight: null,
+        hotel: { name: 'Anona Sunset Boutique', area: 'Karon', staying: true, bookingId: '924160706' },
+        tour: { name: 'James Bond Island', time: '7:00', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '7:00', desc: '🎫 James Bond Island 🚤' }
+        ]
+    },
+    '2025-12-27': {
+        label: '27/12 (Sáb)',
+        city: 'Phuket',
+        summary: 'Similan Islands 🏝️',
+        flight: null,
+        hotel: { name: 'Anona Sunset Boutique', area: 'Karon', staying: true, bookingId: '924160706' },
+        tour: { name: 'Similan Islands', time: '6:00', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '6:00', desc: '🎫 Similan Islands 🏝️' }
+        ]
+    },
+    '2025-12-28': {
+        label: '28/12 (Dom)',
+        city: 'Phuket',
+        summary: 'Dia LIVRE',
+        flight: null,
+        hotel: { name: 'Anona Sunset Boutique', area: 'Karon', staying: true, bookingId: '924160706' },
+        tour: null,
+        pdfs: [],
+        activities: [
+            { time: 'LIVRE', desc: 'Opcional: Ilhas Coral e Racha' }
+        ]
+    },
+    '2025-12-29': {
+        label: '29/12 (Seg)',
+        city: 'Phi Phi',
+        summary: 'Phuket → Phi Phi (Ferry)',
+        flight: null,
+        hotel: {
+            name: 'Viking Nature Resort',
+            area: 'Baía de Ton Sai',
+            checkIn: true,
+            checkOut: false,
+            bookingId: '924303590',
+            address: '222 Moo 7, Baía de Ton Sai',
+            extras: ['Café da manhã incluso!']
+        },
+        tour: null,
+        pdfs: [
+            { name: 'Koh Phi Phi - Viking Nature (29/12-02/01)', url: 'https://drive.google.com/file/d/1ZOtHLf1i6yxsxrHXpdf1er2YAMW5Zsf1/view' },
+            { name: 'Koh Phi Phi - Confirmação #924303590', url: 'https://drive.google.com/file/d/1vuJtI8A5PLvrl_C-Z9fckNuc-jjYz9mc/view' }
+        ],
+        activities: [
+            { time: '~09:00', desc: 'Check-out Anona' },
+            { time: '🚢', desc: 'Ferry Phuket → Phi Phi' },
+            { time: '~14:00', desc: '🏨 Viking Nature Resort' }
+        ]
+    },
+    '2025-12-30': {
+        label: '30/12 (Ter)',
+        city: 'Phi Phi',
+        summary: 'Long Tail Boat',
+        flight: null,
+        hotel: { name: 'Viking Nature Resort', area: 'Baía de Ton Sai', staying: true, bookingId: '924303590' },
+        tour: { name: 'Long Tail Boat (4h)', time: 'Manhã', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '🎫', desc: 'Long Tail Boat (4h)' }
+        ]
+    },
+    '2025-12-31': {
+        label: '31/12 (Qua) 🎆',
+        city: 'Phi Phi',
+        summary: 'Batismo de Mergulho + ANO NOVO!',
+        flight: null,
+        hotel: { name: 'Viking Nature Resort', area: 'Baía de Ton Sai', staying: true, bookingId: '924303590' },
+        tour: { name: 'Batismo de Mergulho', time: '7:00', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '7:00', desc: '🎫 Batismo de Mergulho 🤿' },
+            { time: 'Noite', desc: '🎆 Ano Novo na praia!' }
+        ]
+    },
+    '2026-01-01': {
+        label: '01/01 (Qui) 🎉',
+        city: 'Phi Phi',
+        summary: 'Gold Day Tour (Maya Bay)',
+        flight: null,
+        hotel: { name: 'Viking Nature Resort', area: 'Baía de Ton Sai', staying: true, bookingId: '924303590' },
+        tour: { name: 'Gold Day Tour (Maya Bay)', time: '10:20', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '10:20', desc: '🎫 Gold Day Tour (Maya Bay)' }
+        ]
+    },
+    '2026-01-02': {
+        label: '02/01 (Sex)',
+        city: 'Krabi',
+        summary: 'Phi Phi → Krabi (Ferry)',
+        flight: null,
+        hotel: {
+            name: 'Sea Seeker Krabi Resort',
+            area: 'Ao Nang',
+            checkIn: true,
+            checkOut: false,
+            bookingId: '924157614',
+            address: '963 Moo. 2, T.Aonang',
+            extras: ['Café da manhã incluso!']
+        },
+        tour: null,
+        pdfs: [
+            { name: 'Krabi - Sea Seeker (02-05/01)', url: 'https://drive.google.com/file/d/1sI2radbAeYcfJNs8I1yu6wL6w5q0rFb2/view' },
+            { name: 'Krabi - Confirmação #924157614', url: 'https://drive.google.com/file/d/1sbrkSW9sg3LnK9LraGw4yGEHWvp0qTWf/view' }
+        ],
+        activities: [
+            { time: '~09:00', desc: 'Check-out Viking' },
+            { time: '🚢', desc: 'Ferry Phi Phi → Krabi' },
+            { time: '~14:00', desc: '🏨 Sea Seeker Resort (Ao Nang)' }
+        ]
+    },
+    '2026-01-03': {
+        label: '03/01 (Sáb)',
+        city: 'Krabi',
+        summary: 'Tour 4 Ilhas',
+        flight: null,
+        hotel: { name: 'Sea Seeker Krabi Resort', area: 'Ao Nang', staying: true, bookingId: '924157614' },
+        tour: { name: 'Tour 4 Ilhas', time: '9:00', provider: 'Phi Phi Brazuca' },
+        pdfs: [],
+        activities: [
+            { time: '9:00', desc: '🎫 Tour 4 Ilhas' }
+        ]
+    },
+    '2026-01-04': {
+        label: '04/01 (Dom)',
+        city: 'Krabi',
+        summary: 'Dia LIVRE',
+        flight: null,
+        hotel: { name: 'Sea Seeker Krabi Resort', area: 'Ao Nang', staying: true, bookingId: '924157614' },
+        tour: null,
+        pdfs: [],
+        activities: [
+            { time: 'LIVRE', desc: 'Opcional: Emerald Pool, Railay Beach' }
+        ]
+    },
+    '2026-01-05': {
+        label: '05/01 (Seg)',
+        city: 'Bangkok',
+        summary: 'Krabi → Bangkok',
+        flight: { type: 'domestic', route: 'KBV → BKK', time: '09:35 → 11:00', airline: 'Bangkok Airways PG 262', code: 'DVN5LP' },
+        hotel: {
+            name: 'Siam Mandarina',
+            area: 'Aeroporto',
+            checkIn: true,
+            checkOut: false,
+            bookingId: '924309566',
+            extras: ['Transfer aeroporto incluso!']
+        },
+        tour: null,
+        pdfs: [
+            { name: 'Bangkok (última noite) - Siam Mandarina (05-06/01)', url: 'https://drive.google.com/file/d/1TrUTlZrGrJeAEUM5oltbi3SqMdOpktRK/view' },
+            { name: 'Bangkok (última noite) - Confirmação #924309566', url: 'https://drive.google.com/file/d/11LcDrvQLOj80vaFShEwL7vjiBTm8XrtJ/view' }
+        ],
+        activities: [
+            { time: '~07:00', desc: 'Check-out Sea Seeker (ir pro aeroporto)' },
+            { time: '09:35', desc: '✈️ Voo KBV → BKK' },
+            { time: '~12:00', desc: '🏨 Siam Mandarina' }
+        ]
+    },
+    '2026-01-06': {
+        label: '06/01 (Ter)',
+        city: 'Bangkok',
+        summary: 'Compras + Voo de Volta',
+        flight: { type: 'departure', route: 'BKK → DOH', time: '20:30', airline: 'Qatar Airways', code: '74QULJ' },
+        hotel: { name: 'Siam Mandarina', area: 'Aeroporto', checkOut: true, bookingId: '924309566' },
+        tour: null,
+        pdfs: [],
+        activities: [
+            { time: 'Dia', desc: '🛍️ Compras!' },
+            { time: '~17:00', desc: 'Check-out + ir pro aeroporto' },
+            { time: '20:30', desc: '✈️ Voo BKK → DOH → GRU' }
+        ]
+    },
+    '2026-01-07': {
+        label: '07/01 (Qua)',
+        city: 'Brasil',
+        summary: 'Chegada em casa!',
+        flight: { type: 'arrival', route: 'DOH → GRU', time: '09:50', airline: 'Qatar Airways', code: '74QULJ' },
+        hotel: null,
+        tour: null,
+        pdfs: [],
+        activities: [
+            { time: '09:50', desc: '🏠 Chegada GRU' }
+        ]
+    }
+};
+
+// =============================================
+// CITY POIS - Points of Interest by city
+// =============================================
+
+const CITY_POIS = {
+    'Bangkok': {
+        sections: [
+            {
+                name: '🍜 RESTAURANTES RECOMENDADOS',
+                items: [
+                    {
+                        name: '⭐ Som Tam Jay So',
+                        highlight: true,
+                        tags: ['Silom', 'Isaan autêntico'],
+                        details: '🍽️ PEDIR: Som Tam (salada de papaya), Larb Moo (salada de porco picado), Gai Yang (frango grelhado), Khao Niao (arroz pegajoso). Frequentado por locais!',
+                        price: '50-80 THB'
+                    },
+                    {
+                        name: '⭐ Kuay Teow Khae',
+                        highlight: true,
+                        tags: ['Soi Convent', 'Desde 1956'],
+                        details: '🍽️ PEDIR: Tom Yum Noodles (o clássico!), Wonton de camarão, Kuay Teow Nam (sopa de macarrão). Inspirado em receita Hakka chinesa.',
+                        price: '60-100 THB'
+                    },
+                    {
+                        name: 'Nai Meng Crab Noodle',
+                        tags: ['Silom Soi 20'],
+                        details: '🍽️ PEDIR: Macarrão com wonton de camarão, Crispy pork belly, BBQ pork com cogumelos shiitake.',
+                        price: '70-120 THB'
+                    },
+                    {
+                        name: 'Khao Gaeng Pa Jaew',
+                        tags: ['Atrás do Silom Complex', 'Almoço'],
+                        details: '🍽️ PEDIR: Khao Gaeng (arroz com curry escolhido), mais de 10 opções de curry! Super barato.',
+                        price: '30-50 THB'
+                    },
+                    {
+                        name: 'Supanniga Eating Room',
+                        tags: ['Sathorn', 'Um pouco mais caro'],
+                        details: '🍽️ PEDIR: Crispy Leaf Fish Salad, Panang Neua (curry de carne), Isaan Pork Steak. Ambiente moderno!',
+                        price: '150-300 THB'
+                    },
+                    {
+                        name: 'Namsaah Bottling Trust',
+                        tags: ['Silom', 'Casa rosa!'],
+                        details: '🍽️ PEDIR: Pad Thai especial, Phad Krapow Burger (criação do chef), Pratos clássicos com twist. Chef Ian Kittichai!',
+                        price: '200-400 THB'
+                    },
+                    {
+                        name: 'Khaan Bangkok',
+                        tags: ['Sathorn', 'Michelin Selected 2024'],
+                        details: '🍽️ PEDIR: Menu degustação Thai moderno, pratos sazonais. Arte culinária tailandesa! Premiado 5 meses após abrir.',
+                        price: '300-600 THB'
+                    },
+                    {
+                        name: 'Eat Me Restaurant',
+                        tags: ['Silom', 'Asia 50 Best #23'],
+                        details: '🍽️ PEDIR: Criações do Chef Tim Butler, Modern International com twist Thai. Galeria de arte + restaurante!',
+                        price: '400-800 THB'
+                    },
+                    {
+                        name: 'Somboon Seafood',
+                        tags: ['Várias unidades', 'FAMOSO!'],
+                        details: '🍽️ PEDIR: Curry de caranguejo (IMPERDÍVEL!), Tom Yum Goong, Camarão grelhado. O curry de caranguejo mais famoso de Bangkok!',
+                        price: '200-400 THB'
+                    },
+                    {
+                        name: 'Thip Samai',
+                        tags: ['Phra Nakhon', 'Melhor Pad Thai!'],
+                        details: '🍽️ PEDIR: Pad Thai enrolado no ovo (Superb!), Pad Thai com camarão gigante. Fila sempre! Abre 17h.',
+                        price: '80-150 THB'
+                    }
+                ]
+            },
+            {
+                name: '🥢 Chinatown / Yaowarat',
+                warning: '⚠️ Evitar segundas! Melhor após pôr do sol. MRT Wat Mangkon.',
+                items: [
+                    {
+                        name: '⭐ Lim Lao Ngow',
+                        highlight: true,
+                        tags: ['Michelin 9 anos!'],
+                        details: '🍽️ PEDIR: Kuay Teow Ped (macarrão de pato), Duck noodle soup. Caldo riquíssimo!',
+                        price: '60-100 THB'
+                    },
+                    {
+                        name: 'T&K Seafood',
+                        tags: ['Camisas verdes', 'Fila!'],
+                        details: '🍽️ PEDIR: Tom Yum Goong (camarão), Pad Kra Pao Talay (frutos do mar com manjericão), Pla Pao (peixe grelhado no sal).',
+                        price: '100-200 THB'
+                    },
+                    {
+                        name: 'Jek Pui Curry Rice',
+                        tags: ['Netflix Street Food'],
+                        details: '🍽️ PEDIR: Khao Gaeng (arroz + curry), 5 curries diferentes por dia. Lendário!',
+                        price: '50-80 THB'
+                    }
+                ]
+            },
+            {
+                name: '📍 Silom Soi 20 (Mercado)',
+                items: [
+                    { name: 'Melhor horário: 6-9h ou 11-14h', details: 'Manhã: mercado fresco. Almoço: office workers. Mistura Thai, Chinesa, Indiana.' },
+                    { name: '🍽️ Provar:', details: 'Khao Mok Gai (biryani thai), Khao Ka Moo (porco estufado), Khao Neow Dam Sang Kaya (arroz preto com creme)' }
+                ]
+            },
+            {
+                name: '🏛️ Atrações',
+                items: [
+                    { name: 'Wat Pho', details: 'Buda Reclinado (46m). Entrada: 200 THB' },
+                    { name: 'Wat Arun', details: 'Templo do Amanhecer. Melhor ao pôr do sol' },
+                    { name: 'Grand Palace', details: 'Cobrir ombros e joelhos! Entrada: 500 THB' },
+                    { name: 'Wat Traimit', details: 'Buda de Ouro maciço (5,5 toneladas!)' }
+                ]
+            }
+        ],
+        tip: '💡 Pedir "Mai Phet" (sem pimenta) e "Mai Sai Phak Chee" (sem coentro)',
+        history: [
+            'Nome mais longo do mundo: 168 letras! "Cidade dos Anjos..."',
+            'Nunca colonizada: Único país do Sudeste Asiático',
+            'Red Bull nasceu aqui em 1976',
+            'Hino Nacional: Às 8h e 18h todos param - é lei!'
+        ]
+    },
+    'Chiang Mai': {
+        sections: [
+            {
+                name: '🍜 RESTAURANTES RECOMENDADOS',
+                items: [
+                    {
+                        name: '⭐ Khao Soi Lung Prakit Kad Kom',
+                        highlight: true,
+                        tags: ['Netflix "Somebody Feed Phil"', 'MELHOR KHAO SOI!'],
+                        details: '🍽️ PEDIR: Khao Soi Gai (frango) - caldo cremoso com leite de coco, frango que desmancha! Macarrão crocante por cima. O MELHOR da cidade!',
+                        price: '50-70 THB'
+                    },
+                    {
+                        name: '⭐ Huen Phen',
+                        highlight: true,
+                        tags: ['Old City', '40+ anos'],
+                        details: '🍽️ PEDIR: Khao Soi, Sai Oua (linguiça Lanna), Nam Prik Ong (pasta de chili com carne), Laab Moo Kua (salada de porco do norte). Restaurante tradicional Lanna!',
+                        price: '60-120 THB'
+                    },
+                    {
+                        name: 'Khao Soi Khun Yai',
+                        tags: ['Muro norte Old City', 'Só almoço!'],
+                        details: '🍽️ PEDIR: Khao Soi Gai - porções menores mas sabor autêntico! Entre 2 templos. Abre poucas horas.',
+                        price: '45-60 THB'
+                    },
+                    {
+                        name: 'Khao Soi Mae Sai',
+                        tags: ['Faham Road', 'Popular'],
+                        details: '🍽️ PEDIR: Khao Soi Neua (carne) - os melhores noodles crocantes de Chiang Mai! Caldo mais forte.',
+                        price: '50-70 THB'
+                    },
+                    {
+                        name: 'Khao Kha Moo Chang Phueak',
+                        tags: ['"Cowboy Hat Lady"', 'LENDÁRIA!'],
+                        details: '🍽️ PEDIR: Khao Kha Moo - porco estufado com 5 especiarias sobre arroz + ovo cozido. Funciona só à noite!',
+                        price: '40-60 THB'
+                    },
+                    {
+                        name: '⭐ Huen Muan Jai',
+                        highlight: true,
+                        tags: ['Bib Gourmand', 'Casa de madeira'],
+                        details: '🍽️ PEDIR: Laab Pla (salada de peixe picante), Sai Oua (linguiça Lanna), Nam Prik Num (pimenta verde). Jardim com árvores!',
+                        price: '200-300 THB'
+                    },
+                    {
+                        name: 'Ginger Farm Kitchen',
+                        tags: ['Bib Gourmand 2020-2024', 'Orgânico'],
+                        details: '🍽️ PEDIR: Khao Soi, Pla Scallop, Crispy Pork Belly com ervas. Ingredientes da própria fazenda!',
+                        price: '150-250 THB'
+                    },
+                    {
+                        name: 'The House by Ginger',
+                        tags: ['Michelin Guide', 'Colonial Rústico'],
+                        details: '🍽️ PEDIR: Thai Rustic Colonial cuisine, pratos do norte. Ambiente colonial desde 2004.',
+                        price: '200-350 THB'
+                    },
+                    {
+                        name: 'Baan Landai',
+                        tags: ['Bib Gourmand 2020-2022'],
+                        details: '🍽️ PEDIR: Pratos locais com ingredientes indígenas, culinária Lanna autêntica. Cultura local na comida!',
+                        price: '150-250 THB'
+                    },
+                    {
+                        name: 'Rasik Local Kitchen',
+                        tags: ['Michelin Selected', 'Charcoal stove'],
+                        details: '🍽️ PEDIR: Chef\'s table experience, sabores sazonais. Cozinha tradicional no carvão! Experiência única.',
+                        price: '300-500 THB'
+                    }
+                ]
+            },
+            {
+                name: '🛒 Night Markets',
+                items: [
+                    {
+                        name: '⭐ Chiang Mai Gate Night Market',
+                        highlight: true,
+                        tags: ['Diário 17h-23h'],
+                        details: 'Portão sul da Old City. MUITO local! Menos turistas. Provar: Sai Oua, Khao Soi, Nam Prik.' ,
+                        price: '40-80 THB'
+                    },
+                    { name: 'Night Bazaar', tags: ['Chang Klan Rd', 'Diário 18h-24h'], details: 'Maior mercado. Artesanato, roupas, comida.' }
+                ]
+            },
+            {
+                name: '🏛️ Templo Principal',
+                items: [
+                    { name: '⭐ Wat Phra That Doi Suthep', highlight: true, tags: ['Montanha', 'Pôr do sol'], details: '309 degraus ou elevador. Templo dourado com vista 360°. LEVAR CASACO! Frio à noite.' }
+                ]
+            }
+        ],
+        warning: '⚠️ Vocês: Seg-Qua (22-25/12). Sunday Walking Street = SÓ domingo!',
+        tip: '🌡️ Clima mais fresco! Noite ~20°C - levar casaco pro Doi Suthep',
+        history: [
+            'Reino Lanna: Fundada em 1296 - "Reino de Um Milhão de Campos de Arroz"',
+            'Mais templos da Tailândia: 300+ na região',
+            'Khao Soi: Influência Birmanesa - só existe no norte!'
+        ]
+    },
+    'Phuket': {
+        sections: [
+            {
+                name: '🍜 RESTAURANTES RECOMENDADOS (Karon)',
+                items: [
+                    {
+                        name: '⭐ The Pad Thai Shop',
+                        highlight: true,
+                        tags: ['Sempre lotado!', 'Local favorite'],
+                        details: '🍽️ PEDIR: Pad Thai Goong (camarão), Khao Pad Boo (arroz frito com caranguejo), Chicken Stew. Pequeno e simples mas DELICIOSO!',
+                        price: '80-150 THB'
+                    },
+                    {
+                        name: '⭐ Pinto Karon',
+                        highlight: true,
+                        tags: ['Patak Soi 20', 'Fine dining casual'],
+                        details: '🍽️ PEDIR: Pad Kra Pao, Massaman Curry, Som Tum, Green Curry. Apresentação linda, sabor autêntico!',
+                        price: '100-200 THB'
+                    },
+                    {
+                        name: 'Sabaijai Café',
+                        tags: ['Soi Patai 24', 'Escondido'],
+                        details: '🍽️ PEDIR: Panang Gai (curry vermelho com frango), Tom Kha Gai (canja de coco), Glass noodle soup com frutos do mar.',
+                        price: '80-150 THB'
+                    },
+                    {
+                        name: 'Bai Toey',
+                        tags: ['Old Phuket Resort', 'Aconchegante'],
+                        details: '🍽️ PEDIR: Pad Thai Goong, Peixe frito com alho e pimenta, Tom Yum Goong, Green Curry. Ambiente retrô!',
+                        price: '100-180 THB'
+                    },
+                    {
+                        name: 'Family Seafood Restaurant',
+                        tags: ['Frutos do mar frescos!'],
+                        details: '🍽️ PEDIR: Tom Yum Goong (camarão), Peixe inteiro no vapor, Camarão grelhado. Peixe fresco exposto no gelo!',
+                        price: '150-300 THB'
+                    },
+                    {
+                        name: '⭐ Kaab Gluay',
+                        highlight: true,
+                        tags: ['Patong', 'Expats favorite'],
+                        details: '🍽️ PEDIR: Pratos Thai autênticos, Curries variados, Pad Kra Pao. Melhor Thai de Patong segundo expats!',
+                        price: '80-150 THB'
+                    },
+                    {
+                        name: 'Lob Mhum Patong',
+                        tags: ['Vista do lago', 'Cabanas de bambu'],
+                        details: '🍽️ PEDIR: Thai local, Seafood, Pratos do nordeste. Ambiente lindo com lago e cabanas!',
+                        price: '100-200 THB'
+                    },
+                    {
+                        name: 'Rom Sai Baan Nakalay',
+                        tags: ['Entre Patong e Kamala', 'Vista do mar!'],
+                        details: '🍽️ PEDIR: Isaan food, Seafood fresco, Pratos locais. Escondido num penhasco com vista espetacular!',
+                        price: '100-180 THB'
+                    },
+                    {
+                        name: 'Kalim Rim Lay',
+                        tags: ['Norte de Patong', 'Beira-mar'],
+                        details: '🍽️ PEDIR: Seafood fresco, Thai local, Camarão grelhado. Conhecido pelos locais, preços justos!',
+                        price: '120-200 THB'
+                    },
+                    {
+                        name: 'Pan Yaah Restaurant',
+                        tags: ['Kalim', 'Pôr do sol!'],
+                        details: '🍽️ PEDIR: Thai gourmet, Pratos com vista. Melhor vista da baía de Patong! Romântico.',
+                        price: '200-400 THB'
+                    }
+                ]
+            },
+            {
+                name: '🏛️ Atrações',
+                items: [
+                    { name: '⭐ Big Buddha', highlight: true, tags: ['15min Grab', 'Dia 25/12!'], details: 'Estátua de 45m. Vista 360° da ilha. Cobrir ombros/joelhos. IMPERDÍVEL!' },
+                    { name: 'Promthep Cape', details: 'Ponto mais ao sul. Melhor pôr do sol de Phuket!' },
+                    { name: 'Old Town Phuket', details: 'Arquitetura sino-portuguesa. Casas coloridas. Ótimo pra fotos!' }
+                ]
+            }
+        ],
+        tip: '💡 Restaurantes perto da praia = mais caros. Os melhores ficam mais pra dentro!',
+        history: [
+            'Capital mundial do estanho: De 1528 até 1980',
+            'Heroínas locais: Em 1785, duas mulheres lideraram defesa contra birmaneses',
+            'Lagos são ex-minas: Quase todo lago era mina de estanho!'
+        ]
+    },
+    'Phi Phi': {
+        sections: [
+            {
+                name: '🍜 RESTAURANTES RECOMENDADOS',
+                warning: '💡 RESERVAR para 18h30-19h! Ficam lotados rapidamente. Só dinheiro em muitos lugares!',
+                items: [
+                    {
+                        name: '⭐ Garlic 1992',
+                        highlight: true,
+                        tags: ['CLÁSSICO!', 'Desde 1992'],
+                        details: '🍽️ PEDIR: Pratos com alho (especialidade!), Red Snapper grelhado, Massaman Curry, Pad Thai. O mais antigo e famoso da ilha! LEVE DINHEIRO!',
+                        price: '120-250 THB'
+                    },
+                    {
+                        name: '⭐ Mama Ping',
+                        highlight: true,
+                        tags: ['Beira da praia', 'Vista linda'],
+                        details: '🍽️ PEDIR: Pad Mama (macarrão frito - assinatura!), Lula ao molho de chili-limão, Salada de frutos do mar, Curries variados.',
+                        price: '100-200 THB'
+                    },
+                    {
+                        name: 'Anna\'s Restaurant',
+                        tags: ['Sem sapatos!', 'Autêntico'],
+                        details: '🍽️ PEDIR: Pad Thai (um dos melhores da ilha!), Som Tum, Tom Yum. Ambiente caseiro, entra descalço!',
+                        price: '80-150 THB'
+                    },
+                    {
+                        name: 'The Pirates House',
+                        tags: ['Pier side', 'Thai + Indian'],
+                        details: '🍽️ PEDIR: Spicy Burmese Salad (entrada!), Green Curry, Veggie Massaman. Curries "fora deste mundo"!',
+                        price: '100-180 THB'
+                    },
+                    {
+                        name: '🥭 The Mango Garden',
+                        highlight: true,
+                        tags: ['SOBREMESA!'],
+                        details: '🍽️ PEDIR: Mango Sticky Rice - IMPERDÍVEL! Manga fresca com arroz pegajoso doce e leite de coco.',
+                        price: '80-120 THB'
+                    },
+                    {
+                        name: '⭐ Papaya Restaurant',
+                        highlight: true,
+                        tags: ['Melhor Thai!', 'Porções grandes'],
+                        details: '🍽️ PEDIR: Pineapple Fried Rice (MELHOR da ilha!), Papaya Salad, Massaman Curry. Favorito de todos!',
+                        price: '100-200 THB'
+                    },
+                    {
+                        name: 'Oasis',
+                        tags: ['Mais tranquilo', 'Autêntico'],
+                        details: '🍽️ PEDIR: Garlic Shrimp, Fried Chicken, Chicken Panang Curry. Longe da agitação, mais paz!',
+                        price: '100-180 THB'
+                    },
+                    {
+                        name: 'Basil Bistro',
+                        tags: ['Aconchegante', 'Thai + International'],
+                        details: '🍽️ PEDIR: Mix de Thai e internacional, ambiente cozy. Ótimo para fugir do barulho!',
+                        price: '120-220 THB'
+                    },
+                    {
+                        name: 'Ton Sai Seafood Restaurant',
+                        tags: ['Beira-mar', 'Pôr do sol!'],
+                        details: '🍽️ PEDIR: Seafood fresco, Grelhados do dia. MELHOR vista de Phi Phi! Chegar cedo pro sunset.',
+                        price: '150-300 THB'
+                    },
+                    {
+                        name: 'ACQUA Restaurant',
+                        tags: ['Thai + Europeu', 'Sofisticado'],
+                        details: '🍽️ PEDIR: Duck à l\'orange, Pan-seared salmon, Black pasta com seafood. Para uma noite especial!',
+                        price: '200-400 THB'
+                    }
+                ]
+            },
+            {
+                name: '🏝️ Praias & Atrações',
+                items: [
+                    { name: 'Loh Dalum Bay', tags: ['5-10min a pé'], details: 'Praia do pôr do sol. FESTA DIA 31 AQUI! 🎆' },
+                    { name: '🌄 Viewpoint', tags: ['20-30min subida'], details: 'Vista das duas baías. Melhor ao nascer/pôr do sol.', price: '30 THB' },
+                    { name: '⭐ Maya Bay', highlight: true, tags: ['Tour 01/01', '"A Praia"'], details: 'Filme do DiCaprio! Incluído no Gold Day Tour.' }
+                ]
+            }
+        ],
+        tip: '🎆 ANO NOVO: Festa em Loh Dalum! Contagem regressiva + fogos na praia. Jantar cedo → festa → hotel',
+        warning: 'Ilha pequena, sem carros - tudo a pé! Caminhe de chinelo.',
+        history: [
+            'Nome = "Ilha de Fogo" em Malaio (Pulau Api-Api)',
+            'Filme "A Praia" (2000) com DiCaprio causou boom turístico',
+            'Tsunami 2004: Reconstruída completamente'
+        ]
+    },
+    'Krabi': {
+        sections: [
+            {
+                name: '🍜 RESTAURANTES RECOMENDADOS (Ao Nang)',
+                items: [
+                    {
+                        name: '⭐ KoDam Kitchen',
+                        highlight: true,
+                        tags: ['Favorito local!', 'Ótimo preço'],
+                        details: '🍽️ PEDIR: Tom Kha Gai, Pineapple Fried Rice, Peixe inteiro no vapor, Seafood Platter. Ambiente ótimo!',
+                        price: '100-200 THB'
+                    },
+                    {
+                        name: '⭐ Krua Thara',
+                        highlight: true,
+                        tags: ['Desde 1995', 'FRUTOS DO MAR!'],
+                        details: '🍽️ PEDIR: Camarão grelhado, Tom Yum Goong, Soft shell crab, Mexilhões fritos com manjericão. Melhor seafood da região!',
+                        price: '150-300 THB'
+                    },
+                    {
+                        name: 'D&E\'s Jungle Kitchen',
+                        tags: ['Ambiente jungle!', 'Único'],
+                        details: '🍽️ PEDIR: Makua Yaow (berinjela no curry de coco com camarão), Gaeng Phu (curry de caranguejo). Pratos únicos!',
+                        price: '120-200 THB'
+                    },
+                    {
+                        name: 'Tom Ma Yom',
+                        tags: ['Escondido', 'Local gem'],
+                        details: '🍽️ PEDIR: Green Curry, Pad Thai, Tom Yum. Autêntico e barato! Favorito dos locais.',
+                        price: '70-120 THB'
+                    },
+                    {
+                        name: 'The Last Fisherman',
+                        tags: ['Pôr do sol!', '15+ anos'],
+                        details: '🍽️ PEDIR: BBQ Dinner (spareribs, lula, frango com batata assada), Seafood basket. Ver o pôr do sol daqui!',
+                        price: '150-250 THB'
+                    },
+                    {
+                        name: '⭐ Jungle Kitchen',
+                        highlight: true,
+                        tags: ['Autêntico!', 'Família Thai'],
+                        details: '🍽️ PEDIR: Thai tradicional, opções vegan/gluten-free. Cercado por natureza tropical, comida não diluída pra turista!',
+                        price: '80-150 THB'
+                    },
+                    {
+                        name: 'Bussaba Thai Restaurant',
+                        tags: ['Decoração elegante', 'Pequeno'],
+                        details: '🍽️ PEDIR: Thai clássico com twist, pratos bem elaborados. Ambiente intimista e estiloso!',
+                        price: '120-200 THB'
+                    },
+                    {
+                        name: '⭐ Lae Lay Grill',
+                        highlight: true,
+                        tags: ['Vista panorâmica!', 'Sustentável'],
+                        details: '🍽️ PEDIR: Seafood grelhado, Pratos do dia. Construído na encosta com vista do mar Andaman! RESERVAR!',
+                        price: '200-400 THB'
+                    },
+                    {
+                        name: 'The Hilltop',
+                        tags: ['Pôr do sol ÉPICO!', 'Reservar!'],
+                        details: '🍽️ PEDIR: Menu variado com vista. MELHOR sunset de Ao Nang! Vista das formações de calcário.',
+                        price: '200-350 THB'
+                    },
+                    {
+                        name: 'Ton Ma Yom Thai Food',
+                        tags: ['Hidden gem', 'Local + turista'],
+                        details: '🍽️ PEDIR: Thai autêntico, preços justos. Parece simples mas é hit! Popular entre todos.',
+                        price: '80-150 THB'
+                    }
+                ]
+            },
+            {
+                name: '🛒 Night Markets',
+                items: [
+                    {
+                        name: '⭐ Ao Nang Landmark Night Market',
+                        highlight: true,
+                        tags: ['Diário 15h30-24h'],
+                        details: '80-100 barracas! Shows de fogo, demonstrações de Muay Thai. Comida variada.'
+                    },
+                    { name: 'Krabi Town Night Market', tags: ['Sex-Dom 17h-22h'], details: 'Mais autêntico e mais barato. Vale a visita!' }
+                ]
+            },
+            {
+                name: '🏝️ Praias',
+                items: [
+                    { name: '⭐ Railay Beach', highlight: true, tags: ['Longtail 10min'], details: 'Só de barco! Phra Nang = praia mais bonita. Levar snorkel!' },
+                    { name: '4 Islands Tour (03/01)', tags: ['Reservado ✓'], details: 'Koh Poda, Chicken Island, Tup Island, Phra Nang Cave.' }
+                ]
+            }
+        ],
+        warning: '✈️ ATENÇÃO 05/01: Voo 09:35! Aeroporto = 30min de carro. Sair do hotel ~7h!',
+        tip: '💡 Comida do Sul = mais apimentada! Sempre pedir "Mai Phet"',
+        history: [
+            'Habitada há 35.000 anos',
+            'Nome "Krabi" = espada (uma foi desenterrada aqui)',
+            'Railay só de barco: Falésias de 300m bloqueiam acesso terrestre'
+        ]
+    }
+};
+
+// =============================================
+// DAY NAVIGATION STATE
+// =============================================
+
+const DAY_IDS = Object.keys(DAY_DATA);
+let currentDayIndex = 0;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+// =============================================
+// FIREBASE SYNC FUNCTIONS
+// =============================================
+
+async function syncToFirebase(type, data) {
+    if (!FIREBASE_CONFIG.enabled || isSyncing) return;
+    try {
+        await fetch(`${FIREBASE_CONFIG.databaseURL}/viagem/${type}.json`, {
+            method: 'PUT',
+            body: JSON.stringify({ data: data, updatedAt: Date.now() })
+        });
+        lastSyncTime[type] = Date.now();
+        updateSyncStatus('connected');
+    } catch (e) {
+        updateSyncStatus('offline');
+    }
+}
+
+async function syncFromFirebase() {
+    if (!FIREBASE_CONFIG.enabled || isSyncing) return;
+    isSyncing = true;
+    try {
+        const todosRes = await fetch(`${FIREBASE_CONFIG.databaseURL}/viagem/todos.json`);
+        const todosData = await todosRes.json();
+        if (todosData && todosData.updatedAt > lastSyncTime.todos) {
+            localStorage.setItem(STORAGE_KEY_TODOS, JSON.stringify(todosData.data || {}));
+            lastSyncTime.todos = todosData.updatedAt;
+            renderDayContent();
+        }
+    } catch (e) {
+        console.log('[Sync] Offline');
+    }
+    isSyncing = false;
+}
+
+let currentSyncStatus = '';
+function updateSyncStatus(status) {
+    if (status === currentSyncStatus) return;
+    currentSyncStatus = status;
+    const el = document.getElementById('syncStatus');
+    if (el) el.className = 'sync-status ' + status;
+}
+
+function startSyncPolling() {
+    if (!FIREBASE_CONFIG.enabled) {
+        updateSyncStatus('disabled');
+        return;
+    }
+    syncFromFirebase().then(() => updateSyncStatus('connected')).catch(() => updateSyncStatus('offline'));
+    setInterval(async () => {
+        try {
+            await syncFromFirebase();
+            updateSyncStatus('connected');
+        } catch {
+            updateSyncStatus('offline');
+        }
+    }, FIREBASE_CONFIG.syncInterval);
+}
+
+// =============================================
+// NAVIGATION
+// =============================================
+
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    event.target.classList.add('active');
+}
+
+function toggleCollapsible(header) {
+    header.parentElement.classList.toggle('open');
+}
+
+// =============================================
+// DAY NAVIGATION (Swipe + Tabs)
+// =============================================
+
+function initDayNavigation() {
+    // Find today or default to first day
+    const today = new Date().toISOString().split('T')[0];
+    const todayIndex = DAY_IDS.indexOf(today);
+    currentDayIndex = todayIndex >= 0 ? todayIndex : 0;
+
+    renderDayTabs();
+    renderDayContent();
+    setupSwipeHandlers();
+    setupKeyboardNavigation();
+}
+
+function renderDayTabs() {
+    const container = document.getElementById('dayTabs');
+    if (!container) return;
+
+    const allTodos = loadAllTodos();
+
+    container.innerHTML = DAY_IDS.map((dayId, index) => {
+        const day = DAY_DATA[dayId];
+        const dayNum = dayId.split('-')[2];
+        const hasItems = allTodos[dayId] && allTodos[dayId].length > 0;
+        const isActive = index === currentDayIndex;
+        const isToday = dayId === new Date().toISOString().split('T')[0];
+
+        return `<button class="day-tab ${isActive ? 'active' : ''} ${hasItems ? 'has-items' : ''} ${isToday ? 'today' : ''}"
+                        onclick="goToDay(${index})">${dayNum}</button>`;
+    }).join('');
+
+    // Scroll active tab into view
+    setTimeout(() => {
+        const activeTab = container.querySelector('.day-tab.active');
+        if (activeTab) {
+            activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+    }, 100);
+}
+
+function goToDay(index, direction = null) {
+    if (index < 0 || index >= DAY_IDS.length) return;
+
+    // Determine direction if not specified
+    if (direction === null && index !== currentDayIndex) {
+        direction = index > currentDayIndex ? 'left' : 'right';
+    }
+
+    currentDayIndex = index;
+    renderDayTabs();
+    renderDayContent(direction);
+}
+
+function nextDay() {
+    if (currentDayIndex < DAY_IDS.length - 1) {
+        goToDay(currentDayIndex + 1, 'left');
+    }
+}
+
+function prevDay() {
+    if (currentDayIndex > 0) {
+        goToDay(currentDayIndex - 1, 'right');
+    }
+}
+
+function setupSwipeHandlers() {
+    const container = document.getElementById('dayContent');
+    if (!container) return;
+
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    }, { passive: true });
+}
+
+function handleSwipe() {
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+    const threshold = 50;
+
+    // Only trigger if horizontal movement is significantly greater than vertical
+    // This prevents page changes when user is scrolling up/down
+    if (Math.abs(diffX) > threshold && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+        if (diffX > 0) {
+            nextDay(); // Swipe left = next day
+        } else {
+            prevDay(); // Swipe right = prev day
+        }
+    }
+}
+
+function setupKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        if (e.key === 'ArrowLeft') prevDay();
+        if (e.key === 'ArrowRight') nextDay();
+    });
+}
+
+// =============================================
+// RENDER DAY CONTENT
+// =============================================
+
+function renderDayContent(direction = null) {
+    const container = document.getElementById('dayContent');
+    if (!container) return;
+
+    const dayId = DAY_IDS[currentDayIndex];
+    const day = DAY_DATA[dayId];
+    const city = day.city;
+    const pois = CITY_POIS[city];
+
+    // Add slide animation class if direction specified
+    if (direction) {
+        container.classList.add('slide-out-' + direction);
+        setTimeout(() => {
+            container.classList.remove('slide-out-' + direction);
+            container.classList.add('slide-in-' + direction);
+            actuallyRenderContent();
+            setTimeout(() => {
+                container.classList.remove('slide-in-' + direction);
+            }, 300);
+        }, 150);
+    } else {
+        actuallyRenderContent();
+    }
+
+    function actuallyRenderContent() {
+        let html = '';
+
+        // Day Header
+        html += `
+            <div class="day-header">
+                <h2>📅 ${day.label}</h2>
+                <p class="day-city">${day.city}</p>
+                <p class="day-summary">"${day.summary}"</p>
+            </div>
+        `;
+
+        // To-Do Card (FIRST!)
+        html += `
+            <div class="day-card todos-day-card">
+                <div class="day-card-header">✅ TO-DO</div>
+                <div class="day-card-body">
+                    <div class="todos-input-container">
+                        <input type="text" id="todoInput" placeholder="Adicionar tarefa..." class="todos-input">
+                        <button onclick="addTodo()" class="todos-add-btn">+</button>
+                    </div>
+                    <div id="todosList" class="todos-list"></div>
+                </div>
+            </div>
+        `;
+
+        // Hotel Card
+    if (day.hotel) {
+        const h = day.hotel;
+        let hotelStatus = '';
+        if (h.checkIn) hotelStatus = '🔑 CHECK-IN';
+        else if (h.checkOut) hotelStatus = '🚪 CHECK-OUT';
+        else if (h.staying) hotelStatus = '🛏️ Hospedado';
+
+        html += `
+            <div class="day-card hotel-day-card">
+                <div class="day-card-header">🏨 HOTEL ${hotelStatus ? `<span class="status-badge">${hotelStatus}</span>` : ''}</div>
+                <div class="day-card-body">
+                    <div class="hotel-name-big">${h.name}</div>
+                    <div class="hotel-area">${h.area || ''}</div>
+                    ${h.address ? `<div class="hotel-detail">📍 ${h.address}</div>` : ''}
+                    ${h.checkInTime ? `<div class="hotel-detail">⏰ Check-in: ${h.checkInTime} | Check-out: ${h.checkOutTime || '12:00'}</div>` : ''}
+                    <div class="hotel-detail">📋 Booking: <strong>${h.bookingId}</strong></div>
+                    ${h.extras ? h.extras.map(e => `<div class="hotel-extra">✨ ${e}</div>`).join('') : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    // Flight Card
+    if (day.flight) {
+        const f = day.flight;
+        let flightIcon = f.type === 'arrival' ? '🛬' : f.type === 'departure' ? '🛫' : '✈️';
+
+        html += `
+            <div class="day-card flight-day-card">
+                <div class="day-card-header">${flightIcon} VOO</div>
+                <div class="day-card-body">
+                    <div class="flight-route-big">${f.route}</div>
+                    <div class="flight-time-big">${f.time}</div>
+                    <div class="flight-airline">${f.airline}</div>
+                    <div class="flight-code-big">Código: <strong>${f.code}</strong></div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Tour Card
+    if (day.tour) {
+        const t = day.tour;
+        html += `
+            <div class="day-card tour-day-card">
+                <div class="day-card-header">🎫 PASSEIO</div>
+                <div class="day-card-body">
+                    <div class="tour-name">${t.name}</div>
+                    <div class="tour-time">⏰ ${t.time}</div>
+                    <div class="tour-provider">📞 ${t.provider}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    // PDFs Card
+    if (day.pdfs && day.pdfs.length > 0) {
+        html += `
+            <div class="day-card pdfs-day-card">
+                <div class="day-card-header">📄 DOCUMENTOS DO DIA</div>
+                <div class="day-card-body">
+                    ${day.pdfs.map(pdf => `
+                        <a href="${pdf.url}" target="_blank" class="pdf-link">
+                            <span class="pdf-link-icon">📄</span>
+                            <span class="pdf-link-name">${pdf.name}</span>
+                            <span class="pdf-link-arrow">→</span>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Activities Card
+    if (day.activities && day.activities.length > 0) {
+        html += `
+            <div class="day-card activities-day-card">
+                <div class="day-card-header">📍 ATIVIDADES</div>
+                <div class="day-card-body">
+                    ${day.activities.map(a => `
+                        <div class="activity-item">
+                            <span class="activity-time">${a.time}</span>
+                            <span class="activity-desc">${a.desc}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // POIs Card (always open)
+    if (pois && pois.sections) {
+        html += `
+            <div class="day-card pois-day-card open">
+                <div class="day-card-header">
+                    🍜 ONDE COMER & O QUE VER EM ${city.toUpperCase()}
+                </div>
+                <div class="day-card-body">
+                    <div class="distance-btn-container">
+                        <button id="distanceBtn" class="distance-btn" onclick="calculateDistances()">📍 Calcular Distâncias</button>
+                        <span id="distanceStatus" class="distance-status"></span>
+                    </div>
+                    ${pois.warning ? `<div class="poi-warning">⚠️ ${pois.warning}</div>` : ''}
+                    ${pois.tip ? `<div class="poi-tip">💡 ${pois.tip}</div>` : ''}
+                    ${pois.sections.map(section => `
+                        <div class="poi-section">
+                            <h4 class="poi-section-title">${section.name}</h4>
+                            ${section.warning ? `<div class="poi-section-warning">${section.warning}</div>` : ''}
+                            <div class="poi-items">
+                                ${section.items.map(item => `
+                                    <div class="poi-item ${item.highlight ? 'highlight' : ''}">
+                                        <div class="poi-item-name">${makeGoogleSearchLink(item.name, city)}</div>
+                                        ${item.tags ? `<div class="poi-item-tags">${item.tags.map(t => `<span class="poi-tag">${t}</span>`).join('')}</div>` : ''}
+                                        ${item.details ? `<div class="poi-item-details">${item.details}</div>` : ''}
+                                        ${item.price ? `<span class="poi-item-price">${item.price}</span>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                    ${pois.history ? `
+                        <div class="poi-history">
+                            <h4>📚 História & Curiosidades</h4>
+                            <ul>${pois.history.map(h => `<li>${h}</li>`).join('')}</ul>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    }
+
+    // Swipe hint
+    html += `
+        <div class="swipe-hint">
+            ← Deslize para mudar o dia →
+        </div>
+    `;
+
+        container.innerHTML = html;
+
+        // Re-attach todo input listener
+        const todoInput = document.getElementById('todoInput');
+        if (todoInput) {
+            todoInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') addTodo();
+            });
+        }
+
+        renderTodos();
+    }
+}
+
+// =============================================
+// TO-DO SYSTEM (per day)
+// =============================================
+
+const STORAGE_KEY_TODOS = 'tailandia_todos_v2';
+
+function loadAllTodos() {
+    try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY_TODOS)) || {};
+    } catch {
+        return {};
+    }
+}
+
+function loadTodos() {
+    const all = loadAllTodos();
+    const dayId = DAY_IDS[currentDayIndex];
+    return all[dayId] || [];
+}
+
+function saveTodos(todos) {
+    const all = loadAllTodos();
+    const dayId = DAY_IDS[currentDayIndex];
+    all[dayId] = todos;
+    localStorage.setItem(STORAGE_KEY_TODOS, JSON.stringify(all));
+    syncToFirebase('todos', all);
+    renderDayTabs(); // Update has-items indicators
+}
+
+function renderTodos() {
+    const todos = loadTodos();
+    const container = document.getElementById('todosList');
+    if (!container) return;
+
+    if (todos.length === 0) {
+        container.innerHTML = '<div class="todos-empty">Nenhuma tarefa ainda</div>';
+        return;
+    }
+
+    container.innerHTML = todos.map((todo, index) => `
+        <div class="todo-item ${todo.completed ? 'completed' : ''}">
+            <input type="checkbox" class="todo-checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleTodo(${index})">
+            <span class="todo-text">${escapeHtml(todo.text)}</span>
+            <button class="todo-delete" onclick="deleteTodo(${index})">×</button>
+        </div>
+    `).join('');
+}
+
+function addTodo() {
+    const input = document.getElementById('todoInput');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const todos = loadTodos();
+    todos.unshift({ text, completed: false });
+    saveTodos(todos);
+    renderTodos();
+    input.value = '';
+    input.focus();
+}
+
+function deleteTodo(index) {
+    const todos = loadTodos();
+    todos.splice(index, 1);
+    saveTodos(todos);
+    renderTodos();
+}
+
+function toggleTodo(index) {
+    const todos = loadTodos();
+    todos[index].completed = !todos[index].completed;
+    saveTodos(todos);
+    renderTodos();
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function makeGoogleSearchLink(name, city) {
+    // Skip if it's not a restaurant/place name (starts with emoji or is a general description)
+    if (name.startsWith('🍽️') || name.startsWith('Melhor') || name.startsWith('Provar')) {
+        return name;
+    }
+    // Remove star emoji for cleaner search
+    const cleanName = name.replace(/^⭐\s*/, '').replace(/^🥭\s*/, '');
+    const destination = encodeURIComponent(`${cleanName} ${city} Thailand`);
+    // Use Google Maps Directions - automatically uses current location as origin and calculates distance/time
+    const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=walking`;
+    // Add data attribute for distance calculation
+    const dataName = cleanName.replace(/'/g, "\\'");
+    return `<a href="${directionsUrl}" target="_blank" class="poi-google-link" data-place="${dataName}" data-city="${city}">${name} 📍<span class="distance-badge"></span></a>`;
+}
+
+// =============================================
+// DISTANCE CALCULATION SYSTEM
+// =============================================
+
+const GEOCODE_CACHE_KEY = 'tailandia_geocode_cache';
+let userLocation = null;
+let isCalculatingDistances = false;
+
+// Load geocode cache from localStorage
+function loadGeocodeCache() {
+    try {
+        return JSON.parse(localStorage.getItem(GEOCODE_CACHE_KEY)) || {};
+    } catch {
+        return {};
+    }
+}
+
+// Save geocode cache to localStorage
+function saveGeocodeCache(cache) {
+    localStorage.setItem(GEOCODE_CACHE_KEY, JSON.stringify(cache));
+}
+
+// Haversine formula to calculate distance between two points
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Earth's radius in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c; // Distance in km
+}
+
+// Format distance for display
+function formatDistance(km) {
+    if (km < 1) {
+        return Math.round(km * 1000) + 'm';
+    }
+    return km.toFixed(1) + 'km';
+}
+
+// Geocode a place using Nominatim (OpenStreetMap) - with delay to respect rate limit
+async function geocodePlace(name, city) {
+    const cache = loadGeocodeCache();
+    const cacheKey = `${name}|${city}`;
+
+    // Return cached result if available
+    if (cache[cacheKey]) {
+        return cache[cacheKey];
+    }
+
+    try {
+        const query = encodeURIComponent(`${name}, ${city}, Thailand`);
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`, {
+            headers: { 'User-Agent': 'ViagemTailandia/1.0' }
+        });
+        const data = await response.json();
+
+        if (data && data.length > 0) {
+            const result = { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+            cache[cacheKey] = result;
+            saveGeocodeCache(cache);
+            return result;
+        }
+    } catch (e) {
+        console.log('Geocode error:', e);
+    }
+    return null;
+}
+
+// Get user's current location
+function getUserLocation() {
+    return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+            reject(new Error('Geolocation não suportado'));
+            return;
+        }
+        navigator.geolocation.getCurrentPosition(
+            pos => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
+            err => reject(err),
+            { enableHighAccuracy: true, timeout: 10000 }
+        );
+    });
+}
+
+// Calculate and display distances for all visible restaurants
+async function calculateDistances() {
+    if (isCalculatingDistances) return;
+    isCalculatingDistances = true;
+
+    const btn = document.getElementById('distanceBtn');
+    const statusEl = document.getElementById('distanceStatus');
+
+    if (btn) btn.disabled = true;
+    if (statusEl) statusEl.textContent = '📍 Obtendo sua localização...';
+
+    try {
+        // Get user location
+        userLocation = await getUserLocation();
+        if (statusEl) statusEl.textContent = '🔍 Calculando distâncias...';
+
+        // Find all place links
+        const placeLinks = document.querySelectorAll('.poi-google-link[data-place]');
+        const total = placeLinks.length;
+        let processed = 0;
+
+        for (const link of placeLinks) {
+            const placeName = link.dataset.place;
+            const city = link.dataset.city;
+            const badge = link.querySelector('.distance-badge');
+
+            if (badge) {
+                badge.textContent = '...';
+                badge.classList.add('loading');
+            }
+
+            // Geocode the place
+            const coords = await geocodePlace(placeName, city);
+
+            if (coords && badge) {
+                const distance = calculateDistance(userLocation.lat, userLocation.lon, coords.lat, coords.lon);
+                badge.textContent = formatDistance(distance);
+                badge.classList.remove('loading');
+                badge.classList.add('visible');
+            } else if (badge) {
+                badge.textContent = '';
+                badge.classList.remove('loading');
+            }
+
+            processed++;
+            if (statusEl) statusEl.textContent = `🔍 ${processed}/${total} lugares...`;
+
+            // Respect Nominatim rate limit (1 request per second) - only delay if not cached
+            const cache = loadGeocodeCache();
+            if (!cache[`${placeName}|${city}`]) {
+                await new Promise(r => setTimeout(r, 1100));
+            }
+        }
+
+        if (statusEl) statusEl.textContent = `✅ ${processed} distâncias calculadas!`;
+        setTimeout(() => {
+            if (statusEl) statusEl.textContent = '';
+        }, 3000);
+
+    } catch (e) {
+        console.error('Distance calculation error:', e);
+        if (statusEl) {
+            if (e.code === 1) {
+                statusEl.textContent = '❌ Permissão de localização negada';
+            } else {
+                statusEl.textContent = '❌ Erro ao obter localização';
+            }
+        }
+    }
+
+    if (btn) btn.disabled = false;
+    isCalculatingDistances = false;
+}
+
+// =============================================
+// SEARCH FUNCTIONALITY
+// =============================================
+
+let searchTimeout;
+const sectionNames = {
+    'status': '📍 Status',
+    'resumao': '📊 Resumão',
+    'pdfs': '📄 PDFs',
+    'aeroporto': '🛫 Aeroporto',
+    'dicas': '💡 Dicas',
+    'emergencia': '🆘 SOS'
+};
+
+function performSearch(query) {
+    clearTimeout(searchTimeout);
+    const clearBtn = document.getElementById('searchClear');
+    const resultsDiv = document.getElementById('searchResults');
+    const resultsList = document.getElementById('searchResultsList');
+    const resultsCount = document.getElementById('searchResultsCount');
+
+    if (query.length < 2) {
+        clearBtn.classList.remove('visible');
+        resultsDiv.style.display = 'none';
+        return;
+    }
+
+    clearBtn.classList.add('visible');
+
+    searchTimeout = setTimeout(() => {
+        const results = [];
+        const terms = query.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+
+        // Search in DAY_DATA
+        for (const [dayId, day] of Object.entries(DAY_DATA)) {
+            const searchText = JSON.stringify(day).toLowerCase();
+            if (terms.every(term => searchText.includes(term))) {
+                results.push({
+                    type: 'day',
+                    dayId: dayId,
+                    sectionName: `📅 ${day.label} - ${day.city}`,
+                    preview: day.summary,
+                    dayIndex: DAY_IDS.indexOf(dayId)
+                });
+            }
+        }
+
+        // Search in CITY_POIS
+        for (const [city, pois] of Object.entries(CITY_POIS)) {
+            const searchText = JSON.stringify(pois).toLowerCase();
+            if (terms.every(term => searchText.includes(term))) {
+                // Find first day in this city
+                const cityDayIndex = DAY_IDS.findIndex(id => DAY_DATA[id].city === city);
+                results.push({
+                    type: 'city',
+                    city: city,
+                    sectionName: `🏙️ ${city}`,
+                    preview: `POIs, restaurantes, atrações em ${city}`,
+                    dayIndex: cityDayIndex >= 0 ? cityDayIndex : 0
+                });
+            }
+        }
+
+        // Search in other sections
+        document.querySelectorAll('.section:not(#status)').forEach(section => {
+            const sectionId = section.id;
+            const sectionName = sectionNames[sectionId] || sectionId;
+            const searchableElements = section.querySelectorAll('.card, .poi-card, .schedule-day, .emergency-card, .collapsible, .important-box, table tr, .pdf-item');
+
+            searchableElements.forEach(el => {
+                const text = el.textContent.toLowerCase();
+                if (terms.every(term => text.includes(term))) {
+                    let preview = el.textContent.trim().substring(0, 150);
+                    if (el.textContent.length > 150) preview += '...';
+
+                    let highlightedPreview = preview;
+                    terms.forEach(term => {
+                        const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
+                        highlightedPreview = highlightedPreview.replace(regex, '<mark>$1</mark>');
+                    });
+
+                    results.push({
+                        type: 'section',
+                        sectionId: sectionId,
+                        sectionName: sectionName,
+                        preview: highlightedPreview,
+                        element: el
+                    });
+                }
+            });
+        });
+
+        resultsCount.textContent = `${results.length} resultado${results.length !== 1 ? 's' : ''}`;
+
+        if (results.length === 0) {
+            resultsList.innerHTML = `
+                <div class="search-no-results">
+                    <p>😕 Nenhum resultado para "<strong>${query}</strong>"</p>
+                    <p style="font-size: 0.85rem; margin-top: 10px;">Tente: hotel, pad thai, templo, maya bay</p>
+                </div>
+            `;
+        } else {
+            resultsList.innerHTML = results.slice(0, 50).map((r, i) => `
+                <div class="search-result-item" onclick="goToSearchResult(${JSON.stringify(r).replace(/"/g, '&quot;')})">
+                    <div class="search-result-section">${r.sectionName}</div>
+                    <div class="search-result-text">${r.preview}</div>
+                </div>
+            `).join('');
+        }
+
+        resultsDiv.style.display = 'block';
+    }, 300);
+}
+
+function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function clearSearch() {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchClear').classList.remove('visible');
+    document.getElementById('searchResults').style.display = 'none';
+}
+
+function goToSearchResult(result) {
+    clearSearch();
+
+    if (result.type === 'day' || result.type === 'city') {
+        // Go to Status section and specific day
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('status').classList.add('active');
+        document.querySelector('.nav-tab').classList.add('active'); // First tab is Status
+
+        goToDay(result.dayIndex);
+    } else if (result.type === 'section') {
+        // Go to section
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(result.sectionId).classList.add('active');
+
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            if (tab.textContent.toLowerCase().includes(sectionNames[result.sectionId]?.split(' ')[1]?.toLowerCase() || result.sectionId)) {
+                tab.classList.add('active');
+            }
+        });
+    }
+}
+
+// =============================================
+// INITIALIZATION
+// =============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    initDayNavigation();
+    startSyncPolling();
+});
+
+    </script>
+</body>
+</html>
