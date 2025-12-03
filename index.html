@@ -1095,6 +1095,120 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
     font-family: monospace;
 }
 
+/* Transfer Day Card */
+.transfer-day-card .day-card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.transfer-route {
+    text-align: center;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.transfer-from, .transfer-to {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.transfer-arrow {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin: 5px 0;
+}
+
+.transfer-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.transfer-recommendation {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.transfer-pier-info {
+    background: #fff3cd;
+    color: #856404;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+}
+
+.transfer-options-title {
+    font-weight: 700;
+    color: var(--dark);
+    margin: 12px 0 8px;
+    font-size: 0.95rem;
+}
+
+.transfer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.transfer-option {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+    border-left: 4px solid var(--primary);
+}
+
+.transfer-option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.transfer-option-name {
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+.transfer-option-price {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.transfer-option-time {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.transfer-option-details {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.transfer-arrival-info {
+    background: #cce5ff;
+    color: #004085;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+}
+
 /* Tour Day Card */
 .tour-day-card .day-card-header {
     background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
@@ -2639,6 +2753,18 @@ const DAY_DATA = {
             checkOutTime: '12:00',
             coords: { lat: 13.7234, lon: 100.5294 }
         },
+        transfer: {
+            from: 'Aeroporto Suvarnabhumi (BKK)',
+            to: 'Nares Hotel (Silom)',
+            distance: '30 km',
+            duration: '30-50 min',
+            recommendation: '🚕 Táxi do aeroporto (chegada às 19:25 = noite, táxi é melhor)',
+            options: [
+                { name: '🚕 Táxi Aeroporto', price: '350-500 THB + 50 THB taxa + ~100 THB pedágio', time: '30-50 min', details: 'Fila organizada no nível 1. Pegar ticket na máquina, ir ao box indicado.' },
+                { name: '📱 Grab/Bolt', price: '400-600 THB', time: '30-50 min', details: 'Sair do aeroporto para pegar - motoristas não entram. Mais caro mas preço fixo.' },
+                { name: '🚇 ARL + BTS', price: '~75 THB', time: '55 min', details: 'ARL até Phaya Thai (45 THB, 25min) → BTS até Sala Daeng (30 THB, 14min). NÃO recomendado à noite com malas!' }
+            ]
+        },
         tour: null,
         pdfs: [
             { name: 'Bangkok - Nares Hotel (18-22/12)', url: 'https://drive.google.com/file/d/1yGEUIdXu3k6e2PbSRqQLt7T35zKVxOVa/view' },
@@ -2706,6 +2832,18 @@ const DAY_DATA = {
             extras: ['Café da manhã incluso!'],
             coords: { lat: 18.7910, lon: 98.9904 }
         },
+        transfer: {
+            from: 'Aeroporto Chiang Mai (CNX)',
+            to: "Sanae' Oldtown Hotel (Old City)",
+            distance: '4 km',
+            duration: '10-15 min',
+            recommendation: '🚕 Táxi do aeroporto - preço fixo 150 THB!',
+            options: [
+                { name: '🚕 Táxi Aeroporto', price: '150 THB (fixo)', time: '10-15 min', details: 'Guichê de táxi após retirar bagagem. Preço fixo para qualquer lugar na cidade!' },
+                { name: '📱 Grab', price: '~150-200 THB', time: '10-15 min', details: 'Grab não entra no aeroporto + taxa de 100 THB. Táxi do aeroporto é MAIS BARATO!' },
+                { name: '🚐 Songthaew', price: '40-200 THB', time: '15-20 min', details: 'Caminhonetes vermelhas. Preço depende se compartilhado (40 THB) ou privado (200 THB). Sair das Partidas para preço local.' }
+            ]
+        },
         tour: null,
         pdfs: [
             { name: 'Thai Airways - BKK→CNX (22/12)', url: 'https://drive.google.com/file/d/1OPPGlo-M3AfNOArwCUcnLkyMbbVO50AY/view' },
@@ -2759,6 +2897,19 @@ const DAY_DATA = {
             address: '707 Patak Rd, Karon',
             extras: ['Café da manhã incluso!'],
             coords: { lat: 7.8432, lon: 98.2976 }
+        },
+        transfer: {
+            from: 'Aeroporto Phuket (HKT)',
+            to: 'Anona Sunset Boutique (Karon Beach)',
+            distance: '40 km',
+            duration: '45-60 min',
+            recommendation: '🚕 Táxi no guichê (900 THB fixo) ou Grab fora do aeroporto',
+            options: [
+                { name: '🚕 Táxi Aeroporto', price: '900-1.400 THB', time: '45-50 min', details: 'Guichê no hall de chegadas. Preço tabelado: 900 THB para Karon. Máfia de táxi controla o aeroporto.' },
+                { name: '📱 Grab/Bolt', price: '850-1.200 THB', time: '45-50 min', details: '⚠️ Grab NÃO ENTRA no aeroporto! Sair até a rua principal para encontrar motorista. Pode ser mais barato.' },
+                { name: '🚌 Phuket Smart Bus', price: '100 THB', time: '1h30', details: 'Saída 3, a cada 30min. Último ônibus ~18h. Com chegada às 16:40, dá tempo! Ar-condicionado, pouco espaço p/ malas.' },
+                { name: '🚐 Minivan Compartilhada', price: '200 THB', time: '55 min', details: 'Mais rápido que ônibus. Bagagem embaixo do banco traseiro.' }
+            ]
         },
         tour: null,
         pdfs: [
@@ -2826,6 +2977,20 @@ const DAY_DATA = {
             extras: ['Café da manhã incluso!'],
             coords: { lat: 7.7390, lon: 98.7696 }
         },
+        transfer: {
+            from: 'Phuket (Rassada Pier) via Ferry',
+            to: 'Viking Nature Resort (Ton Sai)',
+            distance: '46 km (mar)',
+            duration: '2-2.5 horas total',
+            recommendation: '🚢 Ferry + a pé (Viking é perto do pier)',
+            howToGetToPier: '🚕 Karon → Rassada Pier: Grab/Táxi ~400-600 THB (45min). Sair do hotel ~7h30 para ferry das 8h30 ou 11h.',
+            options: [
+                { name: '🚢 Ferry Normal', price: '450-550 THB', time: '2 horas', details: 'Saídas: 8:30, 11:00, 13:30, 15:00. Comprar online ou no pier. Confortável com ar-condicionado.' },
+                { name: '🚤 Speedboat', price: '700-1.300 THB', time: '1 hora', details: 'Mais rápido mas mais caro. Saídas várias de manhã. Mais balanço se mar agitado.' },
+                { name: '📍 Taxa de Entrada Phi Phi', price: '400 THB/pessoa', time: 'Pagar no pier', details: '⚠️ OBRIGATÓRIO! Não incluído no ferry. Crianças 200 THB.' }
+            ],
+            atArrival: '🏝️ Ao chegar em Ton Sai Pier: Viking Nature Resort fica a ~5-10min a pé. Ilha sem carros! Tudo a pé ou longtail boat.'
+        },
         tour: null,
         pdfs: [
             { name: 'Koh Phi Phi - Viking Nature (29/12-02/01)', url: 'https://drive.google.com/file/d/1ZOtHLf1i6yxsxrHXpdf1er2YAMW5Zsf1/view' },
@@ -2889,6 +3054,19 @@ const DAY_DATA = {
             extras: ['Café da manhã incluso!'],
             coords: { lat: 8.0405, lon: 98.8237 }
         },
+        transfer: {
+            from: 'Phi Phi (Ton Sai Pier) via Ferry',
+            to: 'Sea Seeker Krabi Resort (Ao Nang)',
+            distance: '42 km (mar + terra)',
+            duration: '2-2.5 horas total',
+            recommendation: '🚢 Ferry para Ao Nang + shuttle/táxi curto',
+            options: [
+                { name: '🚢 Ferry para Nopparat Thara (Ao Nang)', price: '450-650 THB', time: '1h30', details: 'Melhor opção! Chega direto em Ao Nang. Saídas: 9:00, 11:00, 14:00. Depois táxi curto (~100 THB) até hotel.' },
+                { name: '🚢 Ferry para Klong Jilad Pier (Krabi Town)', price: '350-500 THB', time: '2h', details: 'Mais barato, mas chega em Krabi Town. Depois precisa táxi até Ao Nang (~400-500 THB, 30min).' },
+                { name: '🚤 Speedboat para Ao Nang', price: '800-1.200 THB', time: '50 min', details: 'Mais rápido e direto. Chega na praia de Ao Nang.' }
+            ],
+            atArrival: '🏖️ De Nopparat Thara Pier: Sea Seeker fica a ~10min de táxi/Grab (~100-150 THB). Ou pegar songthaew (30-50 THB).'
+        },
         tour: null,
         pdfs: [
             { name: 'Krabi - Sea Seeker (02-05/01)', url: 'https://drive.google.com/file/d/1sI2radbAeYcfJNs8I1yu6wL6w5q0rFb2/view' },
@@ -2937,6 +3115,19 @@ const DAY_DATA = {
             bookingId: '924309566',
             extras: ['Transfer aeroporto incluso!'],
             coords: { lat: 13.7044, lon: 100.7447 }
+        },
+        transfer: {
+            from: 'Aeroporto Suvarnabhumi (BKK)',
+            to: 'Siam Mandarina Hotel (perto do aeroporto)',
+            distance: '5 km',
+            duration: '10-15 min',
+            recommendation: '🚐 Transfer INCLUSO pelo hotel! Só avisar chegada.',
+            howToGetToAirport: '⚠️ ATENÇÃO: Ao Nang → Aeroporto Krabi (KBV): Sair ~7h! Táxi/Grab ~400-500 THB (30min). Voo 09:35!',
+            options: [
+                { name: '🚐 Transfer do Hotel', price: 'GRÁTIS ✓', time: '10-15 min', details: 'Siam Mandarina oferece transfer incluso! Avisar horário de chegada por email/WhatsApp.' },
+                { name: '🚕 Táxi Aeroporto', price: '150-200 THB', time: '10-15 min', details: 'Alternativa se não conseguir o transfer. Preço curto, hotel é perto.' },
+                { name: '📱 Grab', price: '100-150 THB', time: '10-15 min', details: 'Funciona bem nessa área.' }
+            ]
         },
         tour: null,
         pdfs: [
@@ -3863,6 +4054,47 @@ function renderDayContent(direction = null) {
                     <div class="flight-time-big">${f.time}</div>
                     <div class="flight-airline">${f.airline}</div>
                     <div class="flight-code-big">Código: <strong>${f.code}</strong></div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Transfer Card
+    if (day.transfer) {
+        const t = day.transfer;
+        let optionsHtml = '';
+        if (t.options && t.options.length > 0) {
+            optionsHtml = t.options.map(opt => `
+                <div class="transfer-option">
+                    <div class="transfer-option-header">
+                        <span class="transfer-option-name">${opt.name}</span>
+                        <span class="transfer-option-price">${opt.price}</span>
+                    </div>
+                    <div class="transfer-option-time">⏱️ ${opt.time}</div>
+                    <div class="transfer-option-details">${opt.details}</div>
+                </div>
+            `).join('');
+        }
+
+        html += `
+            <div class="day-card transfer-day-card">
+                <div class="day-card-header">🚗 TRANSFER</div>
+                <div class="day-card-body">
+                    <div class="transfer-route">
+                        <div class="transfer-from">📍 ${t.from}</div>
+                        <div class="transfer-arrow">↓</div>
+                        <div class="transfer-to">🏨 ${t.to}</div>
+                    </div>
+                    <div class="transfer-info">
+                        <span class="transfer-distance">📏 ${t.distance}</span>
+                        <span class="transfer-duration">⏱️ ${t.duration}</span>
+                    </div>
+                    <div class="transfer-recommendation">✅ ${t.recommendation}</div>
+                    ${t.howToGetToPier ? `<div class="transfer-pier-info">🚕 ${t.howToGetToPier}</div>` : ''}
+                    ${t.howToGetToAirport ? `<div class="transfer-pier-info">${t.howToGetToAirport}</div>` : ''}
+                    <div class="transfer-options-title">📋 Opções de Transfer:</div>
+                    <div class="transfer-options">${optionsHtml}</div>
+                    ${t.atArrival ? `<div class="transfer-arrival-info">${t.atArrival}</div>` : ''}
                 </div>
             </div>
         `;
