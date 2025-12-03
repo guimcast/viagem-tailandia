@@ -1443,6 +1443,39 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
     }
 }
 
+/* =============================================
+   HOSPITAL LINKS
+   ============================================= */
+
+.hospital-link {
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: 1px dashed #ff5252;
+    transition: all 0.2s;
+}
+
+.hospital-link:hover {
+    color: #ff5252;
+    border-bottom-style: solid;
+}
+
+/* =============================================
+   HOTEL LINKS
+   ============================================= */
+
+.hotel-link {
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.hotel-link:hover {
+    color: var(--primary);
+    border-bottom-style: solid;
+}
+
     </style>
 </head>
 <body>
@@ -2469,26 +2502,64 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
         </div>
 
         <h4 class="mb-10 mt-15">🏥 Hospitais</h4>
+        <div class="distance-btn-container">
+            <button id="distanceBtnHospital" class="distance-btn" onclick="calculateHospitalDistances()">📍 Calcular Distâncias</button>
+            <span id="distanceStatusHospital" class="distance-status"></span>
+        </div>
         <div class="poi-grid">
             <div class="poi-card">
-                <div class="poi-name">Bumrungrad Hospital</div>
+                <div class="poi-name">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Bumrungrad+Hospital+Bangkok+Thailand&travelmode=driving" target="_blank" class="hospital-link" data-lat="13.7470" data-lon="100.5516">
+                        🏥 Bumrungrad Hospital 📍<span class="distance-badge"></span>
+                    </a>
+                </div>
                 <span class="poi-tag">Bangkok</span>
-                <div class="poi-details">+66 2 066 8888</div>
+                <div class="poi-details">+66 2 066 8888 • Internacional, 24h</div>
             </div>
             <div class="poi-card">
-                <div class="poi-name">Chiang Mai Ram</div>
+                <div class="poi-name">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=BNH+Hospital+Silom+Bangkok+Thailand&travelmode=driving" target="_blank" class="hospital-link" data-lat="13.7235" data-lon="100.5321">
+                        🏥 BNH Hospital 📍<span class="distance-badge"></span>
+                    </a>
+                </div>
+                <span class="poi-tag">Bangkok/Silom</span>
+                <div class="poi-details">+66 2 686 2700 • Perto do hotel!</div>
+            </div>
+            <div class="poi-card">
+                <div class="poi-name">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Chiang+Mai+Ram+Hospital+Thailand&travelmode=driving" target="_blank" class="hospital-link" data-lat="18.7916" data-lon="98.9987">
+                        🏥 Chiang Mai Ram 📍<span class="distance-badge"></span>
+                    </a>
+                </div>
                 <span class="poi-tag">Chiang Mai</span>
-                <div class="poi-details">+66 53 920 300</div>
+                <div class="poi-details">+66 53 920 300 • 24h</div>
             </div>
             <div class="poi-card">
-                <div class="poi-name">Bangkok Hospital</div>
+                <div class="poi-name">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Bangkok+Hospital+Phuket+Thailand&travelmode=driving" target="_blank" class="hospital-link" data-lat="7.8965" data-lon="98.3547">
+                        🏥 Bangkok Hospital Phuket 📍<span class="distance-badge"></span>
+                    </a>
+                </div>
                 <span class="poi-tag">Phuket</span>
-                <div class="poi-details">+66 76 254 425</div>
+                <div class="poi-details">+66 76 254 425 • Internacional, 24h</div>
             </div>
             <div class="poi-card">
-                <div class="poi-name">Krabi Hospital</div>
+                <div class="poi-name">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Phi+Phi+Hospital+Thailand&travelmode=driving" target="_blank" class="hospital-link" data-lat="7.7415" data-lon="98.7721">
+                        🏥 Phi Phi Health Center 📍<span class="distance-badge"></span>
+                    </a>
+                </div>
+                <span class="poi-tag">Phi Phi</span>
+                <div class="poi-details">+66 75 627 151 • Básico (emergência → Phuket)</div>
+            </div>
+            <div class="poi-card">
+                <div class="poi-name">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Krabi+Hospital+Thailand&travelmode=driving" target="_blank" class="hospital-link" data-lat="8.0578" data-lon="98.9133">
+                        🏥 Krabi Hospital 📍<span class="distance-badge"></span>
+                    </a>
+                </div>
                 <span class="poi-tag">Krabi</span>
-                <div class="poi-details">+66 75 611 212</div>
+                <div class="poi-details">+66 75 611 212 • 24h</div>
             </div>
         </div>
 
@@ -2565,7 +2636,8 @@ const DAY_DATA = {
             bookingId: '924129454',
             address: '213 Phuttha Osot Alley, Silom',
             checkInTime: '14:00',
-            checkOutTime: '12:00'
+            checkOutTime: '12:00',
+            coords: { lat: 13.7234, lon: 100.5294 }
         },
         tour: null,
         pdfs: [
@@ -2631,7 +2703,8 @@ const DAY_DATA = {
             checkOut: false,
             bookingId: '924137246',
             address: 'Sripoom Road, Old City',
-            extras: ['Café da manhã incluso!']
+            extras: ['Café da manhã incluso!'],
+            coords: { lat: 18.7910, lon: 98.9904 }
         },
         tour: null,
         pdfs: [
@@ -2684,7 +2757,8 @@ const DAY_DATA = {
             checkOut: false,
             bookingId: '924160706',
             address: '707 Patak Rd, Karon',
-            extras: ['Café da manhã incluso!']
+            extras: ['Café da manhã incluso!'],
+            coords: { lat: 7.8432, lon: 98.2976 }
         },
         tour: null,
         pdfs: [
@@ -2749,7 +2823,8 @@ const DAY_DATA = {
             checkOut: false,
             bookingId: '924303590',
             address: '222 Moo 7, Baía de Ton Sai',
-            extras: ['Café da manhã incluso!']
+            extras: ['Café da manhã incluso!'],
+            coords: { lat: 7.7390, lon: 98.7696 }
         },
         tour: null,
         pdfs: [
@@ -2811,7 +2886,8 @@ const DAY_DATA = {
             checkOut: false,
             bookingId: '924157614',
             address: '963 Moo. 2, T.Aonang',
-            extras: ['Café da manhã incluso!']
+            extras: ['Café da manhã incluso!'],
+            coords: { lat: 8.0405, lon: 98.8237 }
         },
         tour: null,
         pdfs: [
@@ -2859,7 +2935,8 @@ const DAY_DATA = {
             checkIn: true,
             checkOut: false,
             bookingId: '924309566',
-            extras: ['Transfer aeroporto incluso!']
+            extras: ['Transfer aeroporto incluso!'],
+            coords: { lat: 13.7044, lon: 100.7447 }
         },
         tour: null,
         pdfs: [
@@ -3708,11 +3785,17 @@ function renderDayContent(direction = null) {
         else if (h.checkOut) hotelStatus = '🚪 CHECK-OUT';
         else if (h.staying) hotelStatus = '🛏️ Hospedado';
 
+        const hotelDestination = encodeURIComponent(`${h.name} ${h.area || ''} Thailand`);
+        const hotelMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${hotelDestination}&travelmode=walking`;
+        const hotelCoordsAttr = h.coords ? `data-lat="${h.coords.lat}" data-lon="${h.coords.lon}"` : '';
+
         html += `
             <div class="day-card hotel-day-card">
                 <div class="day-card-header">🏨 HOTEL ${hotelStatus ? `<span class="status-badge">${hotelStatus}</span>` : ''}</div>
                 <div class="day-card-body">
-                    <div class="hotel-name-big">${h.name}</div>
+                    <div class="hotel-name-big">
+                        <a href="${hotelMapsUrl}" target="_blank" class="hotel-link" ${hotelCoordsAttr}>${h.name} 📍<span class="distance-badge"></span></a>
+                    </div>
                     <div class="hotel-area">${h.area || ''}</div>
                     ${h.address ? `<div class="hotel-detail">📍 ${h.address}</div>` : ''}
                     ${h.checkInTime ? `<div class="hotel-detail">⏰ Check-in: ${h.checkInTime} | Check-out: ${h.checkOutTime || '12:00'}</div>` : ''}
@@ -4098,6 +4181,20 @@ async function calculateDistances() {
             }
         }
 
+        // Also calculate hotel distances (hotel links in day view)
+        const hotelLinks = document.querySelectorAll('.hotel-link[data-lat]');
+        for (const link of hotelLinks) {
+            const badge = link.querySelector('.distance-badge');
+            const lat = parseFloat(link.dataset.lat);
+            const lon = parseFloat(link.dataset.lon);
+
+            if (badge && lat && lon) {
+                const distance = calculateDistance(userLocation.lat, userLocation.lon, lat, lon);
+                badge.textContent = formatDistance(distance);
+                badge.classList.add('visible');
+            }
+        }
+
         if (statusEl) statusEl.textContent = `✅ ${processed} distâncias calculadas!`;
         setTimeout(() => {
             if (statusEl) statusEl.textContent = '';
@@ -4116,6 +4213,43 @@ async function calculateDistances() {
 
     if (btn) btn.disabled = false;
     isCalculatingDistances = false;
+}
+
+// Calculate hospital distances (for emergencia section)
+async function calculateHospitalDistances() {
+    const btn = document.getElementById('distanceBtnHospital');
+    const statusEl = document.getElementById('distanceStatusHospital');
+
+    if (btn) btn.disabled = true;
+    if (statusEl) statusEl.textContent = '📍 Obtendo localização...';
+
+    try {
+        const location = await getUserLocation();
+        if (statusEl) statusEl.textContent = '🔍 Calculando...';
+
+        const hospitalLinks = document.querySelectorAll('.hospital-link[data-lat]');
+
+        for (const link of hospitalLinks) {
+            const badge = link.querySelector('.distance-badge');
+            const lat = parseFloat(link.dataset.lat);
+            const lon = parseFloat(link.dataset.lon);
+
+            if (badge && lat && lon) {
+                const distance = calculateDistance(location.lat, location.lon, lat, lon);
+                badge.textContent = formatDistance(distance);
+                badge.classList.add('visible');
+            }
+        }
+
+        if (statusEl) statusEl.textContent = `✅ Calculado!`;
+        setTimeout(() => { if (statusEl) statusEl.textContent = ''; }, 3000);
+    } catch (e) {
+        if (statusEl) {
+            statusEl.textContent = e.code === 1 ? '❌ Permissão negada' : '❌ Erro';
+        }
+    }
+
+    if (btn) btn.disabled = false;
 }
 
 // =============================================
