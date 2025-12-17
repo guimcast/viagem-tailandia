@@ -1095,6 +1095,119 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
     font-family: monospace;
 }
 
+/* Flight Legs (multiple segments) */
+.flight-legs {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0,0,0,0.1);
+}
+
+.flight-leg {
+    background: rgba(0,180,219,0.08);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.leg-header {
+    font-weight: 700;
+    color: #0083b0;
+    margin-bottom: 8px;
+}
+
+.leg-details {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.leg-details div {
+    margin-bottom: 4px;
+}
+
+.leg-divider {
+    text-align: center;
+    padding: 8px;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* Important Info Card */
+.important-info-day-card .day-card-header {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+}
+
+.important-info-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: #fff8e1;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 4px solid #ff9800;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-content strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #e65100;
+}
+
+.info-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Checklist Card */
+.checklist-day-card .day-card-header {
+    background: linear-gradient(135deg, #26a69a 0%, #00897b 100%);
+    color: white;
+}
+
+.checklist-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+}
+
+.checklist-item:last-child {
+    border-bottom: none;
+}
+
+.checklist-status {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.checklist-content {
+    flex: 1;
+}
+
+.checklist-text {
+    display: block;
+    font-weight: 600;
+    color: #333;
+}
+
+.checklist-details {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 2px;
+}
+
 /* Transfer Day Card */
 .transfer-day-card .day-card-header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -1928,10 +2041,10 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
             <div class="pdf-list">
                 <div class="pdf-item highlight">
                     <div class="pdf-info">
-                        <span class="pdf-icon">✅</span>
+                        <span class="pdf-icon">🛂</span>
                         <span class="pdf-name">TDAC - Natasha & Guilherme (18/12)</span>
                     </div>
-                    <span class="pdf-btn" style="background: #e8f5e9; color: #2e7d32;">TDAC OK!</span>
+                    <span class="pdf-btn" style="background: #fff3cd; color: #856404;">⏳ Sync Drive</span>
                 </div>
             </div>
             <div style="padding: 10px; font-size: 0.85rem; color: #666; background: #f5f5f5; border-radius: 8px; margin-top: 10px;">
@@ -2767,17 +2880,52 @@ const DAY_DATA = {
     '2025-12-17': {
         label: '17/12 (Qua)',
         city: 'Viagem',
-        summary: 'Voo GRU → BKK',
-        flight: { type: 'departure', route: 'GRU → DOH', time: '21:30', airline: 'Qatar Airways', code: '74QULJ' },
+        summary: 'DIA DA PARTIDA! ✈️ GRU → BKK',
+        flight: {
+            type: 'departure',
+            route: 'GRU → DOH → BKK',
+            time: '21:30',
+            airline: 'Qatar Airways',
+            code: '74QULJ',
+            legs: [
+                { route: 'GRU → DOH', flight: 'QR 0827', depart: '21:30', arrive: '15:15+1', duration: '13h45', seats: 'Gui: 40A | Nat: 40B' },
+                { route: 'DOH → BKK', flight: 'QR 0826', depart: '19:40', arrive: '06:25+1', duration: '6h45', seats: 'Gui: 33G | Nat: 33F' }
+            ]
+        },
         hotel: null,
         tour: null,
+        checklist: [
+            { item: '✅ TDAC preenchido', details: 'Nat: 66B6E3F | Gui: 16048A4' },
+            { item: '✅ Passaportes', details: 'Nat: GA672143 | Gui: FX227622' },
+            { item: '✅ Seguro viagem (PDF em inglês)', details: 'MTA 150 - Apólices no celular' },
+            { item: '✅ E-tickets Qatar', details: 'Código: 74QULJ' },
+            { item: '✅ Comprovante hotel Bangkok', details: 'Nares Hotel - Booking #924129454' },
+            { item: '✅ Chip internet', details: 'Gui: Airalo (eSIM) | Nat: True (comprar aeroporto BKK)' },
+            { item: '☐ Check-in online', details: '24h antes - App Qatar Airways' },
+            { item: '☐ Malas prontas', details: 'Max 30kg despachada + 7kg mão' }
+        ],
+        importantInfo: [
+            { icon: '🪑', title: 'ASSENTOS', content: 'GRU→DOH: Gui 40A | Nat 40B (janela+corredor) | DOH→BKK: Gui 33G | Nat 33F (juntos)' },
+            { icon: '🛂', title: 'TDAC', content: 'Natasha: 66B6E3F | Guilherme: 16048A4 - Imprimir ou ter no celular!' },
+            { icon: '📱', title: 'APPS NECESSÁRIOS', content: 'Qatar Airways (check-in), Grab (táxi Thai), Google Maps offline Bangkok' }
+        ],
         pdfs: [
-            { name: 'Qatar Airways - Comprovante Geral', url: 'https://drive.google.com/file/d/1w99LDR6nrr16mfITdMYXyHKu0dEcKH96/view' },
-            { name: 'Qatar - Guilherme (E-Ticket)', url: 'https://drive.google.com/file/d/1cfQxJI5xlDGOIZDhKMp1lE941QCfyhFk/view' },
-            { name: 'Qatar - Natasha (E-Ticket)', url: 'https://drive.google.com/file/d/1_HHT626jPWqujZGIdeORAN1UJ7SA34-I/view' }
+            { name: '✈️ Qatar Airways - Comprovante Geral', url: 'https://drive.google.com/file/d/1w99LDR6nrr16mfITdMYXyHKu0dEcKH96/view' },
+            { name: '✈️ Qatar - Guilherme (E-Ticket)', url: 'https://drive.google.com/file/d/1cfQxJI5xlDGOIZDhKMp1lE941QCfyhFk/view' },
+            { name: '✈️ Qatar - Natasha (E-Ticket)', url: 'https://drive.google.com/file/d/1_HHT626jPWqujZGIdeORAN1UJ7SA34-I/view' },
+            { name: '🛡️ Seguro - Guilherme (INGLÊS)', url: 'https://drive.google.com/file/d/1cm5CLOljsxDwoGpfcDNZJGdFfldNF-Uf/view' },
+            { name: '🛡️ Seguro - Natasha (INGLÊS)', url: 'https://drive.google.com/file/d/1wBWU6AXXpRTH8JFT_qlSigX6dLo9LOjC/view' },
+            { name: '🏨 Bangkok - Nares Hotel (destino)', url: 'https://drive.google.com/file/d/1yGEUIdXu3k6e2PbSRqQLt7T35zKVxOVa/view' }
         ],
         activities: [
-            { time: '21:30', desc: '✈️ Voo Qatar GRU → DOH → BKK' }
+            { time: '~17:00', desc: '🏠 Sair de casa (folga de 4h)' },
+            { time: '~18:00', desc: '🚗 Chegar Aeroporto GRU Terminal 3' },
+            { time: '18:30', desc: '📦 Despachar malas (balcão Qatar)' },
+            { time: '19:00', desc: '🛂 Imigração brasileira' },
+            { time: '19:30', desc: '🛋️ Área de embarque + jantar' },
+            { time: '21:00', desc: '🚪 Embarque (portão abre ~40min antes)' },
+            { time: '21:30', desc: '✈️ DECOLAGEM GRU → DOH (13h45 de voo)' },
+            { time: '---', desc: '💤 Tentar dormir no avião!' }
         ]
     },
     '2025-12-18': {
@@ -3186,15 +3334,50 @@ const DAY_DATA = {
     '2026-01-06': {
         label: '06/01 (Ter)',
         city: 'Bangkok',
-        summary: 'Compras + Voo de Volta',
-        flight: { type: 'departure', route: 'BKK → DOH', time: '20:30', airline: 'Qatar Airways', code: '74QULJ' },
+        summary: 'ÚLTIMO DIA! ✈️ Compras + Voo de Volta',
+        flight: {
+            type: 'departure',
+            route: 'BKK → DOH → GRU',
+            time: '20:30',
+            airline: 'Qatar Airways',
+            code: '74QULJ',
+            legs: [
+                { route: 'BKK → DOH', flight: 'QR 829', depart: '20:30', arrive: '00:05+1', duration: '7h35', seats: 'A confirmar no check-in' },
+                { route: 'DOH → GRU', flight: 'QR 773', depart: '02:20', arrive: '09:50', duration: '14h30', seats: 'A confirmar no check-in' }
+            ]
+        },
         hotel: { name: 'Siam Mandarina', area: 'Aeroporto', checkOut: true, bookingId: '924309566' },
         tour: null,
-        pdfs: [],
+        checklist: [
+            { item: '☐ Check-out Siam Mandarina', details: 'Deixar malas na recepção se quiser passear' },
+            { item: '☐ Compras de última hora', details: 'MBK, Chatuchak ou Terminal 21' },
+            { item: '☐ Chegar aeroporto 3h antes', details: 'BKK é enorme! Chegar ~17:00-17:30' },
+            { item: '☐ Check-in Qatar', details: 'Código: 74QULJ' },
+            { item: '⚠️ Bagagem', details: 'Cuidado com limite de peso das compras!' }
+        ],
+        importantInfo: [
+            { icon: '⏰', title: 'HORÁRIO APERTADO', content: 'Voo 20:30 - Chegar aeroporto até 17:30! Aeroporto BKK é gigante.' },
+            { icon: '🚐', title: 'TRANSFER', content: 'Siam Mandarina fica perto do aeroporto - transfer incluso ou Grab ~100 THB' },
+            { icon: '🛒', title: 'COMPRAS', content: 'Terminal 21 (perto do centro) ou lojas duty-free no aeroporto' },
+            { icon: '💰', title: 'VAT REFUND', content: 'Se comprou >2000 THB em loja com "VAT Refund", pedir reembolso no aeroporto antes do check-in' }
+        ],
+        pdfs: [
+            { name: '✈️ Qatar Airways - Comprovante Geral', url: 'https://drive.google.com/file/d/1w99LDR6nrr16mfITdMYXyHKu0dEcKH96/view' },
+            { name: '✈️ Qatar - Guilherme (E-Ticket)', url: 'https://drive.google.com/file/d/1cfQxJI5xlDGOIZDhKMp1lE941QCfyhFk/view' },
+            { name: '✈️ Qatar - Natasha (E-Ticket)', url: 'https://drive.google.com/file/d/1_HHT626jPWqujZGIdeORAN1UJ7SA34-I/view' },
+            { name: '🏨 Siam Mandarina - Confirmação', url: 'https://drive.google.com/file/d/11LcDrvQLOj80vaFShEwL7vjiBTm8XrtJ/view' }
+        ],
         activities: [
-            { time: 'Dia', desc: '🛍️ Compras!' },
-            { time: '~17:00', desc: 'Check-out + ir pro aeroporto' },
-            { time: '20:30', desc: '✈️ Voo BKK → DOH → GRU' }
+            { time: '~10:00', desc: '🏨 Check-out (deixar malas na recepção)' },
+            { time: '10:30', desc: '🚇 Ir pro centro (ARL do aeroporto)' },
+            { time: '11:00-16:00', desc: '🛍️ Compras! Terminal 21, MBK, etc' },
+            { time: '~16:00', desc: '🚇 Voltar pro Siam Mandarina (pegar malas)' },
+            { time: '~17:00', desc: '🚐 Transfer pro aeroporto BKK' },
+            { time: '17:30', desc: '📦 Check-in Qatar Airways' },
+            { time: '18:00', desc: '💰 VAT Refund (se aplicável)' },
+            { time: '18:30', desc: '🛂 Imigração + Segurança' },
+            { time: '19:00', desc: '🛋️ Duty-free + Embarque' },
+            { time: '20:30', desc: '✈️ DECOLAGEM BKK → DOH (7h35 de voo)' }
         ]
     },
     '2026-01-07': {
@@ -4084,10 +4267,28 @@ function renderDayContent(direction = null) {
         `;
     }
 
-    // Flight Card
+    // Flight Card (with legs support)
     if (day.flight) {
         const f = day.flight;
         let flightIcon = f.type === 'arrival' ? '🛬' : f.type === 'departure' ? '🛫' : '✈️';
+
+        let legsHtml = '';
+        if (f.legs && f.legs.length > 0) {
+            legsHtml = `
+                <div class="flight-legs">
+                    ${f.legs.map((leg, i) => `
+                        <div class="flight-leg">
+                            <div class="leg-header">✈️ Trecho ${i + 1}: ${leg.route}</div>
+                            <div class="leg-details">
+                                <div>🛫 ${leg.depart} → 🛬 ${leg.arrive}</div>
+                                <div>⏱️ ${leg.duration} | Voo: ${leg.flight}</div>
+                                <div>🪑 <strong>${leg.seats}</strong></div>
+                            </div>
+                        </div>
+                    `).join('<div class="leg-divider">↓ Conexão</div>')}
+                </div>
+            `;
+        }
 
         html += `
             <div class="day-card flight-day-card">
@@ -4097,6 +4298,47 @@ function renderDayContent(direction = null) {
                     <div class="flight-time-big">${f.time}</div>
                     <div class="flight-airline">${f.airline}</div>
                     <div class="flight-code-big">Código: <strong>${f.code}</strong></div>
+                    ${legsHtml}
+                </div>
+            </div>
+        `;
+    }
+
+    // Important Info Card (for departure/arrival days)
+    if (day.importantInfo && day.importantInfo.length > 0) {
+        html += `
+            <div class="day-card important-info-day-card">
+                <div class="day-card-header">⚠️ INFORMAÇÕES IMPORTANTES</div>
+                <div class="day-card-body">
+                    ${day.importantInfo.map(info => `
+                        <div class="important-info-item">
+                            <span class="info-icon">${info.icon}</span>
+                            <div class="info-content">
+                                <strong>${info.title}</strong>
+                                <p>${info.content}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Checklist Card (for departure days)
+    if (day.checklist && day.checklist.length > 0) {
+        html += `
+            <div class="day-card checklist-day-card">
+                <div class="day-card-header">📋 CHECKLIST DO DIA</div>
+                <div class="day-card-body">
+                    ${day.checklist.map(item => `
+                        <div class="checklist-item">
+                            <span class="checklist-status">${item.item.startsWith('✅') ? '✅' : item.item.startsWith('☐') ? '☐' : '•'}</span>
+                            <div class="checklist-content">
+                                <span class="checklist-text">${item.item.replace(/^[✅☐⚠️]\s*/, '')}</span>
+                                <span class="checklist-details">${item.details}</span>
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
             </div>
         `;
