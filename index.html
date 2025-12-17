@@ -2331,7 +2331,7 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
                 <span>Qatar Airways (via Doha)</span>
                 <span class="booking-code">74QULJ</span>
             </div>
-            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">Chegada: 18/12 às 19:25</div>
+            <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">Saída: 11:50 | Chegada: 18/12 às 19:25</div>
             <div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ddd;">
                 <strong style="font-size: 0.85rem;">🪑 Assentos:</strong>
                 <div style="display: flex; gap: 20px; margin-top: 5px; font-size: 0.85rem;">
@@ -2417,7 +2417,7 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
                 </tr>
             </table>
             <div style="margin-top: 8px; font-size: 0.85rem; color: #666;">
-                Voo chegada: QR 0826 | Voo saída: QR829
+                Voo chegada: QR 826 | Voo saída: QR 829
             </div>
         </div>
 
@@ -2435,7 +2435,7 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
                 <div class="icon">✈️</div>
                 <p><strong>Qatar Airways - Código: 74QULJ</strong><br>
                 App: Qatar Airways<br>
-                Check-in online 24h antes</p>
+                Check-in online 48h antes</p>
             </div>
 
             <div class="qr-placeholder">
@@ -2474,7 +2474,7 @@ code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85re
             <div class="card-content">
                 <ul>
                     <li>✅ <s>TDAC preenchido</s> (Nat: 66B6E3F | Gui: 16048A4)</li>
-                    <li>☐ Check-in online feito (24h antes)</li>
+                    <li>☐ Check-in online feito (48h antes)</li>
                     <li>✅ <s>Passaporte válido (6+ meses)</s></li>
                     <li>✅ <s>Seguro viagem em inglês no celular</s></li>
                     <li>✅ <s>Comprovante de hotel (booking)</s></li>
@@ -2884,12 +2884,12 @@ const DAY_DATA = {
         flight: {
             type: 'departure',
             route: 'GRU → DOH → BKK',
-            time: '21:30',
+            time: '11:50',
             airline: 'Qatar Airways',
             code: '74QULJ',
             legs: [
-                { route: 'GRU → DOH', flight: 'QR 0827', depart: '21:30', arrive: '15:15+1', duration: '13h45', seats: 'Gui: 40A | Nat: 40B' },
-                { route: 'DOH → BKK', flight: 'QR 0826', depart: '19:40', arrive: '06:25+1', duration: '6h45', seats: 'Gui: 33G | Nat: 33F' }
+                { route: 'GRU → DOH', flight: 'QR 786', depart: '11:50', arrive: '07:20+1', duration: '13h30', seats: 'Gui: 40A | Nat: 40B' },
+                { route: 'DOH → BKK', flight: 'QR 826', depart: '08:50', arrive: '19:25', duration: '6h35', seats: 'Gui: 33G | Nat: 33F' }
             ]
         },
         hotel: null,
@@ -2901,7 +2901,7 @@ const DAY_DATA = {
             { item: '✅ E-tickets Qatar', details: 'Código: 74QULJ' },
             { item: '✅ Comprovante hotel Bangkok', details: 'Nares Hotel - Booking #924129454' },
             { item: '✅ Chip internet', details: 'Gui: Airalo (eSIM) | Nat: True (comprar aeroporto BKK)' },
-            { item: '☐ Check-in online', details: '24h antes - App Qatar Airways' },
+            { item: '☐ Check-in online', details: '48h antes - App Qatar Airways' },
             { item: '☐ Malas prontas', details: 'Max 30kg despachada + 7kg mão' }
         ],
         importantInfo: [
@@ -2919,14 +2919,15 @@ const DAY_DATA = {
             { name: '🏨 Bangkok - Nares Hotel (destino)', url: 'https://drive.google.com/file/d/1yGEUIdXu3k6e2PbSRqQLt7T35zKVxOVa/view' }
         ],
         activities: [
-            { time: '~17:00', desc: '🏠 Sair de casa (folga de 4h)' },
-            { time: '~18:00', desc: '🚗 Chegar Aeroporto GRU Terminal 3' },
-            { time: '18:30', desc: '📦 Despachar malas (balcão Qatar)' },
-            { time: '19:00', desc: '🛂 Imigração brasileira' },
-            { time: '19:30', desc: '🛋️ Área de embarque + jantar' },
-            { time: '21:00', desc: '🚪 Embarque (portão abre ~40min antes)' },
-            { time: '21:30', desc: '✈️ DECOLAGEM GRU → DOH (13h45 de voo)' },
-            { time: '---', desc: '💤 Tentar dormir no avião!' }
+            { time: '~06:00', desc: '⏰ Acordar + café da manhã' },
+            { time: '~07:00', desc: '🏠 Sair de casa' },
+            { time: '~08:00', desc: '🚗 Chegar Aeroporto GRU Terminal 3' },
+            { time: '08:30', desc: '📦 Despachar malas (balcão Qatar)' },
+            { time: '09:00', desc: '🛂 Imigração brasileira' },
+            { time: '09:30', desc: '🛋️ Área de embarque' },
+            { time: '11:20', desc: '🚪 Embarque (portão abre ~30min antes)' },
+            { time: '11:50', desc: '✈️ DECOLAGEM GRU → DOH (13h30 de voo)' },
+            { time: '---', desc: '💤 Tentar dormir no avião! Chegada DOH: 07:20 (18/12)' }
         ]
     },
     '2025-12-18': {
@@ -3343,8 +3344,8 @@ const DAY_DATA = {
             airline: 'Qatar Airways',
             code: '74QULJ',
             legs: [
-                { route: 'BKK → DOH', flight: 'QR 829', depart: '20:30', arrive: '00:05+1', duration: '7h35', seats: 'A confirmar no check-in' },
-                { route: 'DOH → GRU', flight: 'QR 773', depart: '02:20', arrive: '09:50', duration: '14h30', seats: 'A confirmar no check-in' }
+                { route: 'BKK → DOH', flight: 'QR 829', depart: '20:30', arrive: '23:55', duration: '7h25', seats: 'A confirmar no check-in' },
+                { route: 'DOH → GRU', flight: 'QR 785', depart: '00:50', arrive: '09:50', duration: '15h00', seats: 'A confirmar no check-in' }
             ]
         },
         hotel: { name: 'Siam Mandarina', area: 'Aeroporto', checkOut: true, bookingId: '924309566' },
